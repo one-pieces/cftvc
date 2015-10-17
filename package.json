@@ -1,10 +1,10 @@
 {
-  "name": "framework-heavy",
+  "name": "cftvc",
   "version": "1.0.0",
   "main": "server/server.js",
   "repository": {
     "type": "git",
-    "url": "https://github.com/one-pieces/framework-heavy.git"
+    "url": "https://github.com/one-pieces/cftvc.git"
   },
   "dependencies": {
     "body-parser": "^1.13.3",

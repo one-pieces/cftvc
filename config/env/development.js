@@ -1,4 +1,4 @@
-var appName = 'framework';
+var appName = 'cftvc';
 
 module.exports = {
     appName: appName,

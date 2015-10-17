@@ -1,23 +1,15 @@
-# framework-heavy
-A little heavy front end prototype framework for my projects
-
-# Note:
-Change the app name
-1. app/config.ts (appName)
-2. config/env/development.js (appName)
-3. bower.json (name)
-4. package.json (name, repository.url)
-5. README.md
+# cftvc
+A platform for finding actor
 
 How to Set Up:
 
-1. git clone https://github.com/one-pieces/framework-heavy.git
-2. cd framework-heavy
+1. git clone https://github.com/one-pieces/cftvc.git
+2. cd cftvc
 3. npm install
 4. bower install
 5. grunt update
 6. grunt develop
-7. 浏览器输入localhost:5000/framework
+7. 浏览器输入localhost:5000/cftvc
 
 This project has used MEAN(Mongo, Express, AngularJS, NodeJS) framework. The following is the file structure:
 
