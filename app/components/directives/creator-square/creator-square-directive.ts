@@ -1,4 +1,4 @@
-/// <re f erence   path='../../../../app.d.ts' />
+/// <reference path='../../../app.d.ts' />
 /// <amd-dependency path='css!./creator-square.css' />
 /// <amd-dependency path='text!components/directives/creator-square/creator-square.html' />
 import angular = require('angular');
@@ -33,7 +33,7 @@ export class CreatorSquare {
  * ```html
  *
  * <div>
- *     <op-creator-square data="Creators">
+ *     <op-creator-square data="Creator">
  *     </op-creator-square>
  * </div>
  *
