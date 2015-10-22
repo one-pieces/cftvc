@@ -41,7 +41,7 @@ module.exports = function(grunt) {
 					{
 						expand: true,
 						cwd: 'app',
-						src: ['features/**/*.scss', 'components/**/*.scss'],
+						src: ['features/**/*.scss', 'components/**/*.scss', 'styles/*.scss'],
 						ext: '.css',
 						dest: 'build/develop'
 					}

@@ -1,14 +1,4 @@
 <div class="base">
-    <div class="container">
-        <div class="row">
-            <div class="col-sm-4">
-                <h1>{{base.title}} {{base.currentUser.ui.fullName}}</h1>
-            </div>
-            <div class="col-sm-8">
-                <op-example some-attribute="{{base.test}}"></op-example>
-            </div>
-        </div>
-    </div>
     <nav class="navbar" op-scroll-to-fixed-top>
         <div class="container">
             <div class="navbar-header">
@@ -24,19 +14,19 @@
             <div id="navbar" class="collapse navbar-collapse">
                 <ul class="nav navbar-nav">
                     <li class="active">
-                        <a href="/">精选</a>
+                        <a href="/">正在发生</a>
                     </li>
                     <li>
-                        <a href="/">聚焦</a>
+                        <a href="/">艺人</a>
                     </li>
                     <li>
-                        <a href="/">人才库</a>
+                        <a href="/">业务</a>
                     </li>
                     <li>
-                        <a href="/">通告</a>
+                        <a href="/">创作人</a>
                     </li>
                     <li>
-                        <a href="/">梦工场</a>
+                        <a href="/">作品</a>
                     </li>
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
@@ -50,4 +40,70 @@
             </div>
         </div>
     </nav>
+    <div class="section">  
+        <section class="creator-section container">
+            <div class="row">
+                <h2 class="title col-sm-12 list-inline">
+                    <span class="fl">推荐</span>
+                    <div class="sub-title">
+                        <div>创作人</div>
+                        <div>Creator</div>
+                    </div>
+                </h2>
+            </div>
+            <div class="row">
+                <div class="col-sm-6 col-md-4" ng-repeat="creator in base.creators">
+                    <op-creator-square data="creator"></op-creator-square>
+                </div>
+            </div>
+        </section>
+    </div>
+    <footer class="footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-6">
+                    <img src="static/images/brand.jpg" alt width="61" height="15">
+                    <ul class="footer-links">
+                        <li>
+                            <a href="/">精选</a>
+                        </li>
+                        <li>
+                            <a href="/">关于我们</a>
+                        </li>
+                        <li>
+                            <a href="/">联系我们</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="col-sm-6 footer-right">
+                    <ul class="social">
+                        <li>链接</li>
+                        <li>
+                            <a href="/" target="_blank">
+                                <img src="static/images/icon-facebook.png" target="_blank" alt width="24">
+                            </a>
+                        </li>
+                        <li>
+                            <a href="/" target="_blank">
+                                <img src="static/images/icon-twitter.png" target="_blank" alt width="24">
+                            </a>
+                        </li>
+                    </ul>
+                    <p class="f-text">
+                        <a href="/" target="_blank">中国影视广告网</a>
+                        <br>
+                        <a href="/" target="_blank">上海XX信息技术有限公司</a>
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div class="copy-right-sec">
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-6">© 2015 AdPushup, Inc. |  All Right Reserved</div>
+                    <div class="col-sm-6 copy-col-right"></div>
+                </div>
+            </div>
+        </div>
+    </footer>
 </div>

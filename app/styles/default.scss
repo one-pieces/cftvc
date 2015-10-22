@@ -1,0 +1,38 @@
+*, ol, ul, h1,h2,h3,h4,h5,h6 {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background: rgba(0, 0, 0, 0.8);
+    font-family: 'latoregular';
+    font-size: 14px;
+    color: #989898;
+    // height: 1000px;
+}
+
+a {
+    color: #123;
+    img {
+        border: none;
+        vertical-align: top;
+    }
+    &:hover {
+        color: #2EA9DF;
+        text-decoration: none;
+    }
+}
+
+.fl {
+    float: left;
+}
+
+.inb {
+    display: inline-block;
+}
+
+.overdot {
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}

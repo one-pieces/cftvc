@@ -1,6 +1,6 @@
 .base {
     background-color: #e5e5e5;
-    height: 800px;
+    // height: 800px;
 }
 
 .container {
@@ -15,7 +15,9 @@
     margin: 0;
     border: none;
     z-index: 1030;
-    background: rgba(207, 61, 65, 0.8);
+    font-size: 15px;
+    // background: rgba(207, 61, 65, 0.8);
+    background: rgba(243, 179, 0, 0.8);
     
     .navbar-toggle {
         background: #fff;
@@ -45,7 +47,8 @@
 
             &:focus,
             &:hover {
-                color: #eb575c;
+                // color: #eb575c;
+                color: rgb(243, 179, 0);
             }
         }
 
@@ -60,8 +63,86 @@
     }
 }
 
+.section {
+    margin-top: 107px;
+    .creator-section {
+        padding-top: 20px;
+        .title {
+            color: #000;
+            margin-bottom: 15px;
+            font-size: 34px;
+            font-weight: bold;
+            font-family: 'Arial';
+            .sub-title {
+                margin-top: 5px;
+                margin-left: 75px;
+                font-size: 14px;
+                font-weight: normal;
+            }
+        }
+    }
+}
+
+.footer {
+    background: #5a5a5a;
+    color: #acacac;
+    padding-top: 50px;
+
+    .footer-links {
+        margin: 20px 0;
+        li {
+            list-style: none;
+            display: inline;
+            padding-right: 15px;
+        }
+    }
+
+    a {
+        color: #acacac;
+        &:hover {
+            color: #fff;
+        }
+    }
+
+    .copy-right-sec {
+        padding: 15px 0;
+        background: #525252;
+        color: #727272;
+        font-size: 12px;
+    }
+
+    .footer-right {
+        text-align: right;
+        font-size: 12px;
+        color: #868686;
+    }
+
+    .social{
+        li {
+            list-style: none;
+            display: inline;
+            padding-left: 10px;
+        }
+    }
+
+    .f-text {
+        font-size: 13px;
+        line-height: 25px;
+    }
+
+    .copy-col-right {
+        text-align: right;
+    }
+}
+
 .fixed-top {
     position: fixed;
     top: 0;
     background: #eb575c;
+    .navbar-nav >li >a {
+        &:focus,
+        &:hover {
+            color: #eb575c;
+        }
+    }
 }
