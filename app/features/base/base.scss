@@ -65,21 +65,24 @@
 
 .section {
     margin-top: 107px;
+    .title {
+        color: #000;
+        margin-bottom: 15px;
+        font-size: 34px;
+        font-weight: bold;
+        font-family: 'Arial';
+        .sub-title {
+            margin-top: 5px;
+            margin-left: 75px;
+            font-size: 14px;
+            font-weight: normal;
+        }
+    }
     .creator-section {
         padding-top: 20px;
-        .title {
-            color: #000;
-            margin-bottom: 15px;
-            font-size: 34px;
-            font-weight: bold;
-            font-family: 'Arial';
-            .sub-title {
-                margin-top: 5px;
-                margin-left: 75px;
-                font-size: 14px;
-                font-weight: normal;
-            }
-        }
+    }
+    .work-section {
+        padding-top: 20px;
     }
 }
 

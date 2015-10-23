@@ -8,6 +8,7 @@ import config = require('config');
 import creatorSquareDirective = require("../../components/directives/creator-square/creator-square-directive");
 import models = require('../../components/models');
 import scrollToFixedTopDirective = require("../../components/directives/scroll-to-fixed-top/scroll-to-fixed-top-directive");
+import workGridDirective = require("../../components/directives/work-grid/work-grid-directive");
 
 
 'use strict';
@@ -19,5 +20,6 @@ export var controllerName = baseController.controllerName;
 angular.module(moduleName, [
     creatorSquareDirective.moduleName,
     models.moduleName,
-    scrollToFixedTopDirective.moduleName])
+    scrollToFixedTopDirective.moduleName,
+    workGridDirective.moduleName])
     .controller(baseController.controllerName, baseController.Controller);

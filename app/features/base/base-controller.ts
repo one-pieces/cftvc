@@ -3,6 +3,7 @@
 import config = require('config');
 import models = require('../../components/models');
 import creators = require('../../static/data/creators');
+import works = require('../../static/data/works');
 
 'use strict';
 
@@ -20,6 +21,7 @@ export class BaseController {
                        models.user.serviceName ];
 
     creators = creators;
+    works = works;
     currentUser: models.user.IUser;
 
     constructor(private $scope: IScope,

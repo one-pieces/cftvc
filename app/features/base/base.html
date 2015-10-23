@@ -40,7 +40,23 @@
             </div>
         </div>
     </nav>
-    <div class="section">  
+    <div class="section">
+        <section class="work-section container">
+            <div class="row">
+                <h2 class="title col-sm-12 list-inline">
+                    <span class="fl">推荐</span>
+                    <div class="sub-title">
+                        <div>作品</div>
+                        <div>Work</div>
+                    </div>
+                </h2>
+            </div>
+            <div class="row">
+                <div class="col-sm-6 col-md-4" ng-repeat="work in base.works">
+                    <op-work-grid data="work"></work-grid>
+                </div>
+            </div>
+        </section>
         <section class="creator-section container">
             <div class="row">
                 <h2 class="title col-sm-12 list-inline">
