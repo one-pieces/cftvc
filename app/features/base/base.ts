@@ -12,7 +12,6 @@ import scrollToFixedTopDirective = require("../../components/directives/scroll-t
 import slickDirective = require("../../components/directives/slick/slick-directive");
 import workGridDirective = require("../../components/directives/work-grid/work-grid-directive");
 
-
 'use strict';
 
 export var moduleName = config.appName + '.base';
