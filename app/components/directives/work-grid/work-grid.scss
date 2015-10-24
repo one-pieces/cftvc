@@ -1,7 +1,6 @@
 .work-grid {
     padding-bottom: 17px;
-    a>img {
-        // width: 300px;
+    .stage-photo {
         height: 220px;
     }
     .art-cover {
@@ -32,6 +31,9 @@
             .author {
                 padding-top: 4px;
                 max-width: 160px;
+                img {
+                    vertical-align: middle;
+                }
                 .author-text {
                     font-size: 12px;
                     color: rgb(50, 168, 255);

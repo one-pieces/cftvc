@@ -15,9 +15,9 @@ export = [
     },
     {
         id: 'id_3',
-        title: 'MINI在乌镇干了一件“颜值爆表”的事',
-        author: '王晓峰',
-        imgUrl: 'works/w11.jpg'
+        title: '做一把冷兵器之王的弓箭，寻找远去的江湖',
+        author: '武佳',
+        imgUrl: 'works/w16.jpg'
     },
     {
         id: 'id_4',

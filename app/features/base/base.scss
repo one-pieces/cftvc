@@ -2,7 +2,6 @@
     // background-color: #e5e5e5;
     background-color: #FFFFFF;
     .closer {
-        // margin-left: -10px;
         margin-right: -10px;
     }
 }
@@ -19,7 +18,7 @@
     margin: 0;
     border: none;
     z-index: 1030;
-    font-size: 15px;
+    font-size: 17px;
     // background: rgba(207, 61, 65, 0.8);
     background: rgba(243, 179, 0, 0.8);
     
@@ -33,7 +32,7 @@
 
     .navbar-brand {
         color: #fff;
-        font-size: 30px;
+        font-size: 45px;
 
         &:focus,
         &:hover {
@@ -51,7 +50,6 @@
 
             &:focus,
             &:hover {
-                // color: #eb575c;
                 color: rgb(243, 179, 0);
             }
         }
