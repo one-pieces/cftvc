@@ -17,6 +17,7 @@
             require_config: 'config/require_config',
             restmod: 'vendor/angular-restmod/angular-restmod-bundle.min',
             shared_require_config: 'config/shared_require_config',
+            'slick-carousel': 'vendor/slick-carousel/slick.min',
             text: 'vendor/requirejs-text/text',
             'ui.router': 'vendor/angular-ui-router/angular-ui-router'
         },
@@ -33,6 +34,9 @@
             },
             restmod: {
                 deps: ['angular']
+            },
+            'slick-carousel': {
+                deps: ['jquery']
             },
             'ui.router': {
                 deps: ['angular']

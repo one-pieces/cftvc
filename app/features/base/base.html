@@ -1,5 +1,5 @@
 <div class="base">
-    <nav class="navbar" op-scroll-to-fixed-top>
+    <nav class="navbar">
         <div class="container">
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
@@ -41,6 +41,28 @@
         </div>
     </nav>
     <div class="section">
+        <section class="actor-section container">
+            <div class="row">
+                <h2 class="title col-sm-12 list-inline">
+                    <span class="fl">推荐</span>
+                    <div class="sub-title">
+                        <div>艺人</div>
+                        <div>Actor</div>
+                    </div>
+                </h2>
+            </div>
+            <div class="row">
+                <div class="col-sm-12">
+                    <div op-slick infinite="true" responsive="base.actorCarouselResponsiveSettings" init-onload="true" data="base.actors" autoplay="true" speed="300" slides-to-show="4" slides-to-scroll="4" prev-arrow=".base .prev" next-arrow=".base .next">
+                        <div class="slide" ng-repeat="actor in base.actors">
+                            <op-actor-grid data="actor"></op-actor-grid>
+                        </div>
+                    </div>
+                    <div class="slide-arrow prev"></div>
+                    <div class="slide-arrow next"></div>
+                </div>
+            </div>
+        </section>
         <section class="work-section container">
             <div class="row">
                 <h2 class="title col-sm-12 list-inline">
@@ -53,7 +75,7 @@
             </div>
             <div class="row">
                 <div class="col-sm-6 col-md-4" ng-repeat="work in base.works">
-                    <op-work-grid data="work"></work-grid>
+                    <op-work-grid data="work"></op-work-grid>
                 </div>
             </div>
         </section>

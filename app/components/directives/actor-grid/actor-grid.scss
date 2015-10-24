@@ -1,0 +1,20 @@
+.actor-grid {
+    // width: 234px;
+    // height: 353px;
+    height: 350px;
+    margin-right: 10px;
+    position: relative;
+    .actor-info {
+        position: absolute;
+        display: inline-block;
+        bottom: 0px;
+        left: 0px;
+        right: 0px;
+        color: #fff;
+        font-size: 18px;
+        font-weight: bold;
+        line-height: 49px;
+        text-align: center;
+        background-color: #000;
+    }
+}

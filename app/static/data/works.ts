@@ -36,5 +36,5 @@ export = [
         title: '江户前 金枪鱼 寿司',
         author: '张津龙',
         imgUrl: 'works/w15.jpg'
-    },
+    }
 ];

@@ -24,6 +24,7 @@
     "requirejs-plugins": "~1.0.3",
     "requirejs-text": "~2.0.14",
     "bootstrap-css": "~3.3.4",
-    "angular-restmod": "~1.1.9"
+    "angular-restmod": "~1.1.9",
+    "slick-carousel": "~1.5.8"
   }
 }

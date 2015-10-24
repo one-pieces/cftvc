@@ -1,10 +1,14 @@
 .base {
-    background-color: #e5e5e5;
-    // height: 800px;
+    // background-color: #e5e5e5;
+    background-color: #FFFFFF;
+    .closer {
+        // margin-left: -10px;
+        margin-right: -10px;
+    }
 }
 
 .container {
-    max-width: 1400px;
+    max-width: 1000px;
 }
 
 .navbar {
@@ -84,11 +88,33 @@
     .work-section {
         padding-top: 20px;
     }
+    .actor-section {
+        padding-top: 20px;
+        .slide-arrow {
+            // display: none;
+            position: absolute;
+            width: 31px;
+            height: 78px;
+            top: 132px;
+            z-index: 6;
+            color: #000;
+            cursor: pointer;
+            &.prev {
+                left: 15px;
+                background: url(/static/images/lout.png);
+            }
+            &.next {
+                right: 25px;
+                background: url(/static/images/rout.png);
+            }
+        }
+    }
 }
 
 .footer {
     background: #5a5a5a;
     color: #acacac;
+    margin-top: 50px;
     padding-top: 50px;
 
     .footer-links {
