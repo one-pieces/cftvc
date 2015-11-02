@@ -1,3 +1,75 @@
 .creator-profile {
-    
+    background-color: #e5e5e5;
+    .userbg {
+        height: 300px;
+        background-color: #fff;
+        .topbg {
+            width: 100%;
+            height: 300px;
+            position: absolute;
+            left: 0;
+            top: 0;
+            z-index: 0;
+            margin: auto;
+            background: url('/static/images/bg/bannerheader-bg.png') repeat-x;
+        }
+        .bannerbg {
+            height: 300px;
+            margin: 0 auto;
+            background-color: #fff;
+            background-image: url('/static/images/bg/bg-big.jpg');
+        }
+    }
+    .banner {
+        background: #fff;
+        color: #ccc;
+        position: relative;
+        text-align: center;
+        .avatar {
+            position: absolute;
+            top: -73px;
+            left: 50%;
+            margin-left: -73px;
+            img {
+                width: 146px;
+                height: 146px;
+                border-radius: 50%;
+            }
+        }
+        // .info-hover {
+        //     position: absolute;
+        //     top: 51px;
+        //     left: 160px;
+        //     background-color: rgba(0, 0, 0, 0.6);
+        //     padding: 6px 12px;
+        //     border-radius: 5px;
+        //     z-index: 3;
+        //     display: none;
+        //     white-space: nowrap;
+        //     zoom: 1;
+        // }
+        .intro-box {
+            padding-top: 75px;
+            text-align: center;
+            .user-title {
+                font-size: 20px;
+                color: #222;
+                .user-name:hover {
+                    color: #a5a5a5;
+                }
+            }
+            .user-identity {
+                color: #999;
+                font-size: 12px;
+            }
+        }
+    }
+    nav {
+        .navbar-toggle {
+            background: #e5e5e5;
+            .icon-bar {
+                background: #fff;
+            }
+        }
+    }
 }

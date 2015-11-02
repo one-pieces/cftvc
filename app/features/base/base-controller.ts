@@ -52,6 +52,7 @@ export class BaseController {
     creators = creators;
     works = works;
     currentUser: models.user.IUser;
+    navItems = ['通告', '艺人', '创作人', '作品', '梦工场'];
 
     constructor(private $scope: IScope,
                 private UserModel: models.user.IUserStatic) {

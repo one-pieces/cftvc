@@ -8,6 +8,7 @@ import baseController = require("./base-controller");
 import config = require('config');
 import creatorSquareDirective = require("../../components/directives/creator-square/creator-square-directive");
 import models = require('../../components/models');
+import navbarDirective = require('../../components/directives/navbar/navbar-directive');
 import scrollToFixedTopDirective = require("../../components/directives/scroll-to-fixed-top/scroll-to-fixed-top-directive");
 import slickDirective = require("../../components/directives/slick/slick-directive");
 import workGridDirective = require("../../components/directives/work-grid/work-grid-directive");
@@ -22,6 +23,7 @@ angular.module(moduleName, [
     actorGridDirective.moduleName,
     creatorSquareDirective.moduleName,
     models.moduleName,
+    navbarDirective.moduleName,
     scrollToFixedTopDirective.moduleName,
     slickDirective.moduleName,
     workGridDirective.moduleName])

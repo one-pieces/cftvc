@@ -25,15 +25,18 @@ export class CreatorProfileController {
                        models.user.serviceName ];
     
     creators = creators;
+    creator: any;
     creatorId: string;
     currentUser: models.user.IUser;
+    navItems = ['作品', '文章', '照片', '合作伙伴'];
 
     constructor(private $scope: IScope,
                 private $state: ng.ui.IStateService,
                 private UserModel: models.user.IUserStatic) {
         $scope.creatorProfile = this;
         this.creatorId = (<IProfileStateParams>$state.params).id;
-        console.log(this.creatorId);
+        this.creator = this.creators[parseInt(this.creatorId.charAt(3), 10)];
+        console.log(this.creators[parseInt(this.creatorId.charAt(3), 10)]);
         this.UserModel.$find('_0_1').$then((user) => {
             user.ui.fullName = user.givenName + ' ' + user.familyName;
             this.currentUser = user;

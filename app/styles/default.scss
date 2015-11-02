@@ -8,14 +8,12 @@ body {
     font-family: 'latoregular';
     font-size: 14px;
     color: #989898;
-    // height: 1000px;
 }
 
 a {
     color: #123;
     img {
         border: none;
-        vertical-align: top;
     }
     &:hover {
         color: #2EA9DF;
@@ -25,6 +23,10 @@ a {
 
 .fl {
     float: left;
+}
+
+.fr {
+    float: right;
 }
 
 .inb {
@@ -42,4 +44,10 @@ a {
     zoom: 1;
     vertical-align: middle;
     height: 25%;
+}
+
+.icon-vip {
+    width: 20px;
+    height: 20px;
+    background: url('/static/images/v-role.png') no-repeat;
 }
