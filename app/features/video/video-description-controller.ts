@@ -2,41 +2,40 @@
 
 import config = require('config');
 import models = require('../../components/models');
-import creators = require('../../static/data/creators');
+import videos = require('../../static/data/videos');
 
 'use strict';
 
 export interface IScope extends ng.IScope {
-    creatorProfile?: CreatorProfileController;
+    videoDescription?: VideoDescriptionController;
 }
 
 export interface IStateParams extends ng.ui.IStateParamsService {
     id: string;
 }
 
-export var controllerName = config.appName + '.creatorProfile.controller';
+export var controllerName = config.appName + '.videoDescription.controller';
 
 /**
- * Controller for the creatorProfile page
+ * Controller for the videoDescription page
  */
-export class CreatorProfileController {
+export class VideoDescriptionController {
     static $inject = [ '$scope',
                        '$state',
                        models.user.serviceName ];
     
-    creators = creators;
-    creator: any;
-    creatorId: string;
+    videos = videos;
+    video: any;
+    videoId: string;
     currentUser: models.user.IUser;
     navItems = ['作品', '文章', '照片', '合作伙伴'];
 
     constructor(private $scope: IScope,
                 private $state: ng.ui.IStateService,
                 private UserModel: models.user.IUserStatic) {
-        $scope.creatorProfile = this;
-        this.creatorId = (<IStateParams>$state.params).id;
-        this.creator = this.creators[parseInt(this.creatorId.charAt(3), 10)];
-        console.log(this.creators[parseInt(this.creatorId.charAt(3), 10)]);
+        $scope.videoDescription = this;
+        this.videoId = (<IStateParams>$state.params).id;
+        this.video = this.videos[parseInt(this.videoId.charAt(3), 10)];
         this.UserModel.$find('_0_1').$then((user) => {
             user.ui.fullName = user.givenName + ' ' + user.familyName;
             this.currentUser = user;
@@ -45,4 +44,4 @@ export class CreatorProfileController {
     }
 }
 
-export class Controller extends CreatorProfileController {}
+export class Controller extends VideoDescriptionController {}

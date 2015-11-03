@@ -1,0 +1,18 @@
+.video-description {
+    background: #e5e5e5;
+    .play-box {
+        color: #ccc;
+        padding: 20px 0;
+        background: #000;
+        .breadcrumb {
+            a {color: #ccc;}
+            background: #000;
+        }
+    }
+    .description {
+        margin-top: 20px;
+        .paper {
+            background: #fff;
+        }
+    }
+}

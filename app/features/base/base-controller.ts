@@ -4,7 +4,7 @@ import actors = require('../../static/data/actors');
 import config = require('config');
 import models = require('../../components/models');
 import creators = require('../../static/data/creators');
-import works = require('../../static/data/works');
+import videos = require('../../static/data/videos');
 
 'use strict';
 
@@ -50,7 +50,7 @@ export class BaseController {
     slidesToShow = 4;
     actors = actors;
     creators = creators;
-    works = works;
+    videos = videos;
     currentUser: models.user.IUser;
     navItems = ['通告', '艺人', '创作人', '作品', '梦工场'];
 

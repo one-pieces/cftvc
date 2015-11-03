@@ -8,3 +8,4 @@ app/.*.ts
 npm-debug.log
 .idea
 .tscache
+tscommand*

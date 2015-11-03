@@ -34,8 +34,8 @@
                 </h2>
             </div>
             <div class="row">
-                <div class="col-sm-6 col-md-4" ng-repeat="work in base.works">
-                    <op-work-grid data="work"></op-work-grid>
+                <div class="col-sm-6 col-md-4" ng-repeat="video in base.videos">
+                    <op-work-grid data="video" ui-sref="videoDescription({id: video.id})"></op-work-grid>
                 </div>
             </div>
         </section>
