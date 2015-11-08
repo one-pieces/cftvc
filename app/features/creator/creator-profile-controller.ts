@@ -35,8 +35,7 @@ export class CreatorProfileController {
                 private UserModel: models.user.IUserStatic) {
         $scope.creatorProfile = this;
         this.creatorId = (<IStateParams>$state.params).id;
-        this.creator = this.creators[parseInt(this.creatorId.charAt(3), 10)];
-        console.log(this.creators[parseInt(this.creatorId.charAt(3), 10)]);
+        this.creator = this.creators[parseInt(this.creatorId, 10)];
         this.UserModel.$find('_0_1').$then((user) => {
             user.ui.fullName = user.givenName + ' ' + user.familyName;
             this.currentUser = user;

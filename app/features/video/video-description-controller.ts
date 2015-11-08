@@ -1,6 +1,7 @@
 /// <reference path='../../app.d.ts' />
 
 import config = require('config');
+import creators = require('../../static/data/creators');
 import models = require('../../components/models');
 import videos = require('../../static/data/videos');
 
@@ -24,6 +25,7 @@ export class VideoDescriptionController {
                        '$state',
                        models.user.serviceName ];
     
+    creator: any;
     videos = videos;
     video: any;
     videoId: string;
@@ -35,7 +37,8 @@ export class VideoDescriptionController {
                 private UserModel: models.user.IUserStatic) {
         $scope.videoDescription = this;
         this.videoId = (<IStateParams>$state.params).id;
-        this.video = this.videos[parseInt(this.videoId.charAt(3), 10)];
+        this.video = this.videos[parseInt(this.videoId, 10)];
+        this.creator = creators[this.video.creatorId];
         this.UserModel.$find('_0_1').$then((user) => {
             user.ui.fullName = user.givenName + ' ' + user.familyName;
             this.currentUser = user;
