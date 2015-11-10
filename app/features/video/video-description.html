@@ -13,14 +13,129 @@
     <div class="description container">
         <div class="row">
             <div class="col-sm-8">
-                <div class="paper">
-                    <h1>haha</h1>
+                <div class="paper main">
+                    <div class="function-bar">
+                        <a class="col-sm-4 btn-like" href="#">
+                            <div class="fr">
+                                <span>推上首页 1/30</span>
+                            </div>
+                            <!-- <i class="icon-like"></i> -->
+                            <img src="/static/images/icons/heart-gray.png">
+                            <span>喜欢</span>
+                        </a>
+                        <a class="col-sm-4 btn-invite" href="#">
+                            <div class="fr">
+                                <span>邀请更多人交流</span>
+                            </div>
+                            <!-- <i class="icon-like"></i> -->
+                            <img src="/static/images/icons/invite-gray.png">
+                            <span>邀请点评</span>
+                        </a>
+                        <a class="col-sm-4 btn-share" href="#">
+                            <img src="/static/images/icons/wechat-gray.png">
+                            <img src="/static/images/icons/weibo-gray.png">
+                            <img src="/static/images/icons/qqzone-gray.png"><img src="/static/images/icons/douban-gray.png">
+                        </a>
+                    </div>
+                    <div class="synopsis">
+                        <div class="row">
+                            <div class="col-xs-10">
+                                <span>今天 11:09 | </span>
+                                <a href="#" target="_blank">广告/宣传片</a>
+                                <span> - </span>
+                                <a href="#" target="_blank">网络广告</a>
+                            </div>
+                            <div class="col-xs-2">播放：1,155</div>
+                        </div>
+                        <div class="intro">
+                            今天，我们为大家打来回家系列的最后一发——《迟来的新衣》
+                            对于一个孩子来说，新年最开心的事情莫过于有一件新衣穿在身上，在广东肇庆打工的夫妇们终于要回到贵州老家了，家中的孩子现在有多高了呢？在外打工的母亲已经拿捏不准新衣的尺码。万水千山，什么样的景致在这一刻都不及家中的笑脸，那件新衣终究是短了些，但对未来的希望一点也不曾减短，我们拼搏，我们隐忍，我们满怀希望，我想这大概是家的力量吧，就像歌里唱的：“家里的，让他不怕往前冲。”这是我们的心最终落脚的地方，这一生，我们都走在回家的路上。
+                        </div>
+                        <div class="like-count">5人喜欢</div>
+                        <ul class="like-users list-inline">
+                            <li>
+                                <a href="#" target="_blank">
+                                    <img src="/static/images/{{videoDescription.creator.imgUrl}}" width="36" height="36">
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#" target="_blank">
+                                    <img src="/static/images/{{videoDescription.creator.imgUrl}}" width="36" height="36">
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#" target="_blank">
+                                    <img src="/static/images/{{videoDescription.creator.imgUrl}}" width="36" height="36">
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#" target="_blank">
+                                    <img src="/static/images/{{videoDescription.creator.imgUrl}}" width="36" height="36">
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#" target="_blank">
+                                    <img src="/static/images/{{videoDescription.creator.imgUrl}}" width="36" height="36">
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="paper comments-box">
+                    <div class="row">
+                        <div class="col-xs-12 login">
+                            <a href="#">登录</a>
+                            <span>或</span>
+                            <a href="#">注册</a>
+                            <span>，给作者的作品评价一下</span>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-12 comments-count">
+                            <span>全部评论(2)</span>
+                        </div>
+                    </div>
+                    <ul class="comments">
+                        <li  class="row comment">
+                            <div class="col-xs-2">
+                                <div class="col-xs-6 nopadding">赞同</div>
+                                <div class="col-xs-6 nopadding">
+                                    <a href="#" target="_blank">
+                                        <img src="/static/images/{{videoDescription.creator.imgUrl}}" width="36" height="36">
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="col-xs-10">
+                                haha
+                            </div>
+                        </li>
+                        <li  class="row comment">
+                            <div class="col-xs-2">
+                                <div class="col-xs-6 nopadding">赞同</div>
+                                <div class="col-xs-6 nopadding">
+                                    <a href="#" target="_blank">
+                                        <img src="/static/images/{{videoDescription.creator.imgUrl}}" width="36" height="36">
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="col-xs-10">
+                                haha
+                            </div>
+                        </li>
+                    </ul>
                 </div>
             </div>
             <div class="col-sm-4">
-                <div class="paper">
-                    <op-creator-square data="videoDescription.creator" ui-sref="creatorProfile({id: videoDescription.creator.id})"></op-creator-square>
-                </div>
+                <!-- <div class="row"> -->
+                    <div class="paper creator">
+                        <op-creator-square data="videoDescription.creator" ui-sref="creatorProfile({id: videoDescription.creator.id})"></op-creator-square>
+                    </div>
+                <!-- </div> -->
+                <!-- <div class="row"> -->
+                    <div class="paper videos">
+                        <op-work-grid data="videoDescription.video" ui-sref="videoDescription({id: videoDescription.video.id})"></op-work-grid>
+                    </div>
+                <!-- </div> -->
             </div>
         </div>
     </div>

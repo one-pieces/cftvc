@@ -14,5 +14,106 @@
         .paper {
             background: #fff;
         }
+        .main {
+            margin-bottom: 15px;
+            .function-bar {
+                z-index: 102;
+                font-size: 14px;
+                height: 62px;
+                position: relative;
+                .btn-like, .btn-invite, .btn-share {
+                    padding: 10px 10px 10px 20px;
+                    display: inline-block;
+                    zoom: 1;
+                    vertical-align: top;
+                    img {
+                        width: 43px;
+                        height: 43px;
+                    }
+                    >span {
+                        font-weight: normal;
+                        font-size: 20px;
+                        line-height: 38px;
+                    }
+                    .fr {
+                        font-size: 12px;
+                        margin-top: 13px;
+                    }
+                    &:hover {
+                        color: #fff;
+                    }
+                    // i.icon-like {
+                    //     background: url(/static/images/icons/heart-gray.png) no-repeat;
+                    //     width: 43px;
+                    //     height: 43px;
+                    // }
+                }
+                .btn-like, .btn-invite {
+                    border-right: 2px solid #e5e5e5;
+                }
+                .btn-like:hover {
+                    background: #ff4444;
+                }
+                .btn-invite:hover {
+                    background: #7ac943;
+                }
+                .btn-share img {
+                    margin-right: 9px;
+                }
+            }
+            .synopsis {
+                font-size: 12px;
+                border-top: 2px solid #e5e5e5;
+                padding: 10px 20px 15px;
+                .intro {
+                    font-size: 13px;
+                    padding: 15px;
+                }
+                .like-count {
+                    color: #333;
+                    padding: 0 0 5px;
+                }
+                .like-users {
+                    li {
+                        padding-right: 0px;
+                        img {
+                            border-radius: 50%;
+                        }
+                    }
+                }
+            }
+        }
+        .comments-box {
+            color: #123;
+            margin-bottom: 15px;
+            padding: 10px 20px 30px;
+            .login {
+                text-align: center;
+                padding: 10px 20px 30px;
+                a {
+                    color: #2EA9DF;
+                }
+            }
+            .comments-count {
+
+            }
+            .comments {
+                margin-top: 15px;
+                .comment {
+                    margin: 0 0 12px 0;
+                    padding: 20px 0 0 0;
+                    border-top: 1px dashed #ccc;
+                    img {
+                        border-radius: 50%;
+                    }
+                }
+            }
+        }
+        .creator {
+            margin-bottom: 15px;
+        }
+        .videos {
+            padding: 15px;
+        }
     }
 }
