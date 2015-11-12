@@ -8,6 +8,13 @@
             a {color: #ccc;}
             background: #000;
         }
+        .container {
+            text-align: center;
+            embed {
+                width: 960px;
+                height: 580px;
+            }
+        }
     }
     .description {
         margin-top: 20px;
