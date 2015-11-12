@@ -114,6 +114,11 @@
         }
         .videos {
             padding: 15px;
+            .work-grid {
+                .stage-photo {
+                    height: 120px;
+                }
+            }
         }
     }
 }

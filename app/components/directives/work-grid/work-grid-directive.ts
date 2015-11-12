@@ -14,6 +14,7 @@ export var templateText = window.require('text!components/directives/work-grid/w
 export interface IScope extends ng.IScope {
     workGrid: WorkGrid;
     data: any;
+    canBeHovered: boolean;
 }
 
 /**
@@ -49,17 +50,20 @@ export class WorkGridDirective implements ng.IDirective {
     template = templateText;
     // transclude = true;
     scope = {
-        data: '=?'
+        data: '=?',
+        canBeHovered: '=?'
     };
 
     link = (scope: IScope, element: ng.IAugmentedJQuery, attrs: ng.IAttributes) => {
-        element.hover(() => {
-            element.find('.art-cover').css('display', 'block');
-        }, () => {
-            element.find('.art-cover').css('display', 'none');
-        });
+        if (scope.canBeHovered) {
+            element.hover(() => {
+                element.find('.art-cover').css('display', 'block');
+                }, () => {
+                element.find('.art-cover').css('display', 'none');
+            });
+        }
         scope.workGrid = <WorkGrid>
-        this.$injector.instantiate(WorkGrid, { scope: scope, element: element, attrs: attrs });
+            this.$injector.instantiate(WorkGrid, { scope: scope, element: element, attrs: attrs });
     }
 }
 
