@@ -4,6 +4,7 @@
 import angular = require('angular');
 import base = require('./features/base/base');
 import config = require('config');
+import actorProfile = require('./features/actor/actor-profile');
 import creatorProfile = require('./features/creator/creator-profile');
 import videoDescription = require('./features/video/video-description');
 
@@ -13,7 +14,8 @@ export var moduleName = config.appName + '.routes';
 
 angular.module(moduleName, [
     'ui.router', 
-    base.moduleName, 
+    base.moduleName,
+    actorProfile.moduleName,
     creatorProfile.moduleName,
     videoDescription.moduleName])
     .config(['$stateProvider', ($stateProvider: ng.ui.IStateProvider) => {
@@ -22,6 +24,11 @@ angular.module(moduleName, [
                 url: config.basePath,
                 template: base.template,
                 controller: base.controllerName
+            })
+            .state('actorProfile', {
+                url: config.basePath + '/actor/:id',
+                template: actorProfile.template,
+                controller: actorProfile.controllerName
             })
             .state('creatorProfile', {
                 url: config.basePath + '/creator/:id',

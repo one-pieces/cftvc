@@ -1,0 +1,67 @@
+.actor-profile {
+    .header {
+        margin-bottom: 10px;
+        .name {
+            color: #ccc;
+        }
+        .locations {
+            padding-left: 15px;
+            font-size: 13px;
+            font-weight: normal;
+            border-left: 2px solid #ccc;
+        }
+        .order-button {
+            background: #9c0;
+            color: #fff;
+            height: 25px;
+            padding: 0 12px;
+        }
+        .download-button {
+            background: #fff;
+            color: #000;
+            border: 1px solid #000;
+            height: 25px;
+            padding: 0 12px;
+        }
+    }
+    .board {
+        border: 1px solid #e8e7e7;
+        margin-bottom: 10px;
+        .details {
+            padding: 36px;
+            >ul {
+                margin-bottom: 25px;
+                .detail-label {
+                    margin-left: 20px;
+                    font-size: 15px;
+                    color: #000;
+                    font-weight: 700;
+                }
+            }
+            .detail-item {
+                color: #666;
+                padding: 8px 0;
+                .value {
+                    color: #000;
+                    font-weight: 500;
+                }
+            }
+        }
+    }
+    .work-intro {
+        font-size: 16px;
+        >ul {
+            margin: 20px 0;
+            .labal {
+                color: #000;
+                padding-right: 30px;
+                margin-right: 20px;
+                font-weight: 600;
+                border-right: 2px solid #989898;
+            }
+            .style {
+                margin-right: 20px;
+            }
+        }
+    }
+}

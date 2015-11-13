@@ -1,0 +1,101 @@
+<div class="actor-profile container">
+    <div class="row header">
+        <ul class="list-inline">
+            <li>
+                <h1 class="name">{{actorProfile.actor.name}}
+                </h1>
+            </li>
+            <li>
+                <h6 class="locations">
+                    <div>所在地</div>
+                    <div>{{actorProfile.actor.location}}</div>
+                </h6>
+            </li>
+            <li>
+                <h1>
+                    <a href="#" class="btn order-button">工作预约</a>
+                </h1>
+            </li>
+            <li>
+                <h1>
+                    <a href="#" class="btn download-button">下载模特卡</a>
+                </h1>
+            </li>
+        </ul>
+    </div>
+    <div class="row board">
+        <div class="col-sm-6 details">
+            <ul class="list-inline">
+                <li>
+                    <img src="/static/images/icons/point.png" width="20" height="20">
+                </li>
+                <li>
+                    <div class="detail-label">模特儿/演员</div>
+                </li>
+            </ul>
+            <div class="detail-item">
+                <span>身高 /</span>
+                <span class="value">{{actorProfile.actor.body.height}}</span>
+            </div>
+            <div class="detail-item">
+                <span>体重 / </span>
+                <span class="value">{{actorProfile.actor.body.weight}}</span>
+            </div>
+            <div class="detail-item">
+                <span>胸围 / </span>
+                <span class="value">{{actorProfile.actor.body.chest}}</span>
+            </div>
+            <div class="detail-item">
+                <span>腰围 / </span>
+                <span class="value">{{actorProfile.actor.body.waist}}</span>
+            </div>
+            <div class="detail-item">
+                <span>臀围 / </span>
+                <span class="value">{{actorProfile.actor.body.hip}}</span>
+            </div>
+            <div class="detail-item">
+                <span>鞋码 / </span>
+                <span class="value">{{actorProfile.actor.body.shoesSize}}</span>
+            </div>
+            <div class="detail-item">
+                <span>头发颜色 / </span>
+                <span class="value">{{actorProfile.actor.body.hairColor}}</span>
+            </div>
+            <div class="detail-item">
+                <span>眼睛颜色 / </span>
+                <span class="value">{{actorProfile.actor.body.eyeColor}}</span>
+            </div>
+        </div>
+        <div class="col-sm-6 nopadding photos">
+            <img src="/static/images/{{actorProfile.actor.imgUrl}}" width="100%" height="100%">
+        </div>
+    </div>
+    <div class="row work-intro">
+        <!-- <div class="row">
+            <div class="col-xs-2">
+                工作经验 | 
+            </div>
+            <div class="col-xs-10">
+                工作经验 | 
+            </div>
+        </div> -->
+        <ul class="list-inline">
+            <li>
+                <span class="labal">工作经验  
+                </span>
+            </li>
+            <li>
+                <span>{{actorProfile.actor.work.experience}}</span>
+            </li>
+        </ul>
+        <ul class="list-inline">
+            <li>
+                <span class="labal">工作风格  
+                </span>
+            </li>
+            <li>
+                <span class="style" ng-repeat="style in actorProfile.actor.work.styles">{{style}}</span>
+            </li>
+        </ul>
+    </div>
+</div>
