@@ -1,12 +1,10 @@
 <div class="creator-square">
     <div class="square-img inb">
-        <a href="#" target="_blank">
-            <img src="/static/images/{{data.imgUrl}}" width="90" height="90">
-        </a>
+        <op-avatar data="data" radius="middle"></op-avatar>
     </div>
     <div class="square-info">
         <div class="square-h">
-            <a href="#" target="_blank">{{data.name}}</a>
+            <a href="#" ui-sref="creatorProfile({id: data.id})">{{data.name}}</a>
             <a href="#" target="_blank">
                 <img src="/static/images/v-role.png" width="20" height="20">
             </a>

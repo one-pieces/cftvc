@@ -7,12 +7,13 @@ import $ = require('jquery');
 import angular = require('angular');
 import config = require('config');
 import routes = require('./routes');
+import avatarDirective = require('./components/directives/avatar/avatar-directive');
 
 'use strict';
 
 var moduleName = config.appName;
 
-var app = angular.module(moduleName, [routes.moduleName]);
+var app = angular.module(moduleName, [routes.moduleName, avatarDirective.moduleName]);
 
 app.config(['$urlRouterProvider', '$stateProvider', '$locationProvider', 
     function($urlRouterProvider: ng.ui.IUrlRouterProvider, 
