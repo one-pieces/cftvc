@@ -1,60 +1,7 @@
 <div class="base">
     <op-navbar nav-items="base.navItems" is-brand-shown="true" is-login-shown="true"></op-navbar>
     <div class="section">
-        <section class="actor-section container">
-            <div class="row">
-                <h2 class="title col-sm-12 list-inline">
-                    <span class="fl">推荐</span>
-                    <div class="sub-title">
-                        <div>艺人</div>
-                        <div>Actor</div>
-                    </div>
-                </h2>
-            </div>
-            <div class="row">
-                <div class="col-sm-12">
-                    <div op-slick infinite="true" responsive="base.actorCarouselResponsiveSettings" init-onload="true" data="base.actors" autoplay="true" speed="300" slides-to-show="4" slides-to-scroll="4" prev-arrow=".base .prev" next-arrow=".base .next">
-                        <div class="slide" ng-repeat="actor in base.actors">
-                            <op-actor-grid data="actor"></op-actor-grid>
-                        </div>
-                    </div>
-                    <div class="slide-arrow prev"></div>
-                    <div class="slide-arrow next"></div>
-                </div>
-            </div>
-        </section>
-        <section class="work-section container">
-            <div class="row">
-                <h2 class="title col-sm-12 list-inline">
-                    <span class="fl">推荐</span>
-                    <div class="sub-title">
-                        <div>作品</div>
-                        <div>Work</div>
-                    </div>
-                </h2>
-            </div>
-            <div class="row">
-                <div class="work col-sm-6 col-md-4" ng-repeat="video in base.videos">
-                    <op-work-grid data="video" can-be-hovered="true" ui-sref="videoDescription({id: video.id})"></op-work-grid>
-                </div>
-            </div>
-        </section>
-        <section class="creator-section container">
-            <div class="row">
-                <h2 class="title col-sm-12 list-inline">
-                    <span class="fl">推荐</span>
-                    <div class="sub-title">
-                        <div>创作人</div>
-                        <div>Creator</div>
-                    </div>
-                </h2>
-            </div>
-            <div class="row">
-                <div class="col-sm-6 col-md-4" ng-repeat="creator in base.creators">
-                    <op-creator-square data="creator"></op-creator-square>
-                </div>
-            </div>
-        </section>
+        <div ui-view></div>
     </div>
     <footer class="footer">
         <div class="container">

@@ -1,0 +1,56 @@
+<div class="index">
+    <section class="actor-section container">
+        <div class="row">
+            <h2 class="title col-sm-12 list-inline">
+                <span class="fl">推荐</span>
+                <div class="sub-title">
+                    <div>艺人</div>
+                    <div>Actor</div>
+                </div>
+            </h2>
+        </div>
+        <div class="row">
+            <div class="col-sm-12">
+                <div op-slick infinite="true" responsive="index.actorCarouselResponsiveSettings" init-onload="true" data="index.actors" autoplay="true" speed="300" slides-to-show="index.slidesToShow" slides-to-scroll="4" prev-arrow=".index .prev" next-arrow=".index .next">
+                    <div class="slide" ng-repeat="actor in index.actors">
+                        <op-actor-grid data="actor"></op-actor-grid>
+                    </div>
+                </div>
+                <div class="slide-arrow prev"></div>
+                <div class="slide-arrow next"></div>
+            </div>
+        </div>
+    </section>
+    <section class="work-section container">
+        <div class="row">
+            <h2 class="title col-sm-12 list-inline">
+                <span class="fl">推荐</span>
+                <div class="sub-title">
+                    <div>作品</div>
+                    <div>Work</div>
+                </div>
+            </h2>
+        </div>
+        <div class="row">
+            <div class="work col-sm-6 col-md-4" ng-repeat="video in index.videos">
+                <op-work-grid data="video" can-be-hovered="true" ui-sref="videoDescription({id: video.id})"></op-work-grid>
+            </div>
+        </div>
+    </section>
+    <section class="creator-section container">
+        <div class="row">
+            <h2 class="title col-sm-12 list-inline">
+                <span class="fl">推荐</span>
+                <div class="sub-title">
+                    <div>创作人</div>
+                    <div>Creator</div>
+                </div>
+            </h2>
+        </div>
+        <div class="row">
+            <div class="col-sm-6 col-md-4" ng-repeat="creator in index.creators">
+                <op-creator-square data="creator"></op-creator-square>
+            </div>
+        </div>
+    </section>
+</div>

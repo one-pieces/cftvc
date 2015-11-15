@@ -7,13 +7,13 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a ng-show="isBrandShown" class="navbar-brand" href="/">cftvc</a>
+            <a ng-show="isBrandShown" class="navbar-brand" href="/" ui-sref="base.index">cftvc</a>
         </div>
 
         <div id="navbar" class="collapse navbar-collapse">
             <ul class="nav navbar-nav">
                 <li ng-repeat="item in navItems">
-                    <a href="/">{{item}}</a>
+                    <a href="#" ui-sref="{{item.link}}">{{item.label}}</a>
                 </li>
             </ul>
             <ul ng-show="isLoginShown" class="nav navbar-nav navbar-right">

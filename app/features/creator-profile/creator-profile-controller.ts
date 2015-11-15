@@ -28,7 +28,23 @@ export class CreatorProfileController {
     creator: any;
     creatorId: string;
     currentUser: models.user.IUser;
-    navItems = ['作品', '文章', '照片', '合作伙伴'];
+    navItems = [ 
+        {
+            label: '作品'
+            link: ''
+        },
+        { 
+            label: '文章',
+            link: '',
+        },
+        {
+            label: '照片',
+            link: ''
+        }, 
+        {
+            label: '合作伙伴',
+            link: ''
+        }];
 
     constructor(private $scope: IScope,
                 private $state: ng.ui.IStateService,

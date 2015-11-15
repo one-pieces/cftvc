@@ -12,7 +12,7 @@ export var templateText = window.require('text!components/directives/navbar/navb
 
 export interface IScope extends ng.IScope {
     navbar: Navbar;
-    navItems: string[];
+    navItems: any[];
     isBrandShown?: boolean;
     isLoginShown?: boolean;
 }
