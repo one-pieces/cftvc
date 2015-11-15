@@ -1,0 +1,20 @@
+.actor-slick {
+    .slide-arrow {
+        display: none;
+        position: absolute;
+        width: 31px;
+        height: 78px;
+        top: 132px;
+        z-index: 6;
+        color: #000;
+        cursor: pointer;
+        &.prev {
+            left: 15px;
+            background: url(/static/images/lout.png);
+        }
+        &.next {
+            right: 25px;
+            background: url(/static/images/rout.png);
+        }
+    }
+}

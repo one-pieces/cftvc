@@ -30,7 +30,7 @@ export class CreatorProfileController {
     currentUser: models.user.IUser;
     navItems = [ 
         {
-            label: '作品'
+            label: '作品',
             link: ''
         },
         { 

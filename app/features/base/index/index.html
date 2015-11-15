@@ -11,13 +11,7 @@
         </div>
         <div class="row">
             <div class="col-sm-12">
-                <div op-slick infinite="true" responsive="index.actorCarouselResponsiveSettings" init-onload="true" data="index.actors" autoplay="true" speed="300" slides-to-show="index.slidesToShow" slides-to-scroll="4" prev-arrow=".index .prev" next-arrow=".index .next">
-                    <div class="slide" ng-repeat="actor in index.actors">
-                        <op-actor-grid data="actor"></op-actor-grid>
-                    </div>
-                </div>
-                <div class="slide-arrow prev"></div>
-                <div class="slide-arrow next"></div>
+                <op-actor-slick data="index.actors"></op-actor-slick>
             </div>
         </div>
     </section>

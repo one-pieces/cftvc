@@ -18,34 +18,6 @@ export var controllerName = config.appName + '.base.index.controller';
  */
 export class IndexController {
     static $inject = [ '$scope' ];
-    /**
-        arouse needs to be manually configured with breakpoint settings.
-        ues derived from the brakpoint widths specified in the stylesheets.
-    */
-    actorCarouselResponsiveSettings = [
-        {
-            breakpoint: 1024,
-            settings: {
-                slidesToShow: 3,
-                slidesToScroll: 3
-            }
-        },
-        {
-            breakpoint: 600,
-            settings: {
-                slidesToShow: 2,
-                slidesToScroll: 2
-            }
-        },
-        {
-            breakpoint: 480,
-            settings: {
-                slidesToShow: 1,
-                slidesToScroll: 1
-            }
-        }
-    ];
-    slidesToShow = 4;
     actors = actors;
     creators = creators;
     videos = videos;

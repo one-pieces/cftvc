@@ -1,0 +1,9 @@
+<div class="actor-slick">
+    <div op-slick infinite="true" responsive="actorSlick.actorCarouselResponsiveSettings" init-onload="true" data="data" autoplay="true" speed="300" slides-to-show="actorSlick.slidesToShow" slides-to-scroll="4" prev-arrow=".actor-slick .prev" next-arrow=".actor-slick .next">
+        <div class="slide" ng-repeat="actor in data">
+            <op-actor-grid data="actor"></op-actor-grid>
+        </div>
+    </div>
+    <div class="slide-arrow prev"></div>
+    <div class="slide-arrow next"></div>
+</div>
