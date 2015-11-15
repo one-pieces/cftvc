@@ -1,6 +1,6 @@
 /// <reference path="../../app.d.ts" />
 /// <amd-dependency path="css!./video-description.css" />
-/// <amd-dependency path="text!features/video/video-description.html" />
+/// <amd-dependency path="text!features/video-description/video-description.html" />
 
 import angular = require('angular');
 import config = require('config');
@@ -10,7 +10,7 @@ import navbarDirective = require('../../components/directives/navbar/navbar-dire
 'use strict';
 
 export var moduleName = config.appName + '.videoDescription';
-export var template = window.require('text!features/video/video-description.html');
+export var template = window.require('text!features/video-description/video-description.html');
 export var controllerName = videoDescriptionController.controllerName;
 
 angular.module(moduleName, [navbarDirective.moduleName])
