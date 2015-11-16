@@ -14,6 +14,7 @@ export var templateText = window.require('text!components/directives/actor-grid/
 export interface IScope extends ng.IScope {
     actorGrid: ActorGrid;
     data: any;
+    isSquare: boolean;
 }
 
 /**
@@ -49,15 +50,31 @@ export class ActorGridDirective implements ng.IDirective {
     template = templateText;
     // transclude = true;
     scope = {
-        data: '=?'
+        data: '=?',
+        isSquare: '=?'
     };
 
     link = (scope: IScope, element: ng.IAugmentedJQuery, attrs: ng.IAttributes) => {
-        element.hover(() => {
-            element.find('.art-cover').css('display', 'block');
-        }, () => {
-            element.find('.art-cover').css('display', 'none');
-        });
+        if (scope.isSquare) {
+            var infoEle = element.find('.actor-info');
+            var actorGridEle = element.find('.actor-grid');
+            actorGridEle.css('height', actorGridEle.width());
+            infoEle.css('line-height', actorGridEle.height() / 5 + 'px');
+            infoEle.css('font-size', actorGridEle.height()/5*0.4 + 'px');
+            //宽度改变时，高度随之改变
+            $(window).resize(() => {
+                actorGridEle.css('height', actorGridEle.width());
+                infoEle.css('line-height', actorGridEle.height() / 5 + 'px');
+                infoEle.css('font-size', actorGridEle.height()/5*0.4 + 'px');
+            });
+
+            infoEle.css('display', 'none');
+            element.hover(() => {
+                infoEle.css('display', 'block');
+            }, () => {
+                infoEle.css('display', 'none');
+            });
+        }
         scope.actorGrid = <ActorGrid>
         this.$injector.instantiate(ActorGrid, { scope: scope, element: element, attrs: attrs });
     }
