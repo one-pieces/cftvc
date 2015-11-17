@@ -1,0 +1,35 @@
+.login {
+    border: #bfbfbf solid 1px;
+    padding: 10px;
+    margin-top: 40px;
+    .login-section {
+        border: #bfbfbf solid 1px;
+        padding: 7px 20px;
+        .login-label {
+            color: #0cf;
+            margin-top: 10px;
+            margin-bottom: 20px;
+        }
+        form {
+            // padding-bottom: 10px;
+            margin-bottom: 15px;
+            border-bottom: #bbb dashed 1px;
+        }
+        .other-login {
+            .way-login {
+                text-align: center;
+                input {
+                    width: 245px;
+                    height: 46px;
+                    margin-top: 10px;
+                }
+                .sina-login {
+                    background: url('/static/images/icons/sina_login_btn2.jpg') no-repeat;
+                }
+                .qq-login {
+                    background: url('/static/images/icons/qq_login_btn2.jpg') no-repeat;
+                }
+            }
+        }
+    }
+}

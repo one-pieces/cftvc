@@ -5,6 +5,7 @@ import angular = require('angular');
 import base = require('./features/base/base');
 import config = require('config');
 import index = require('./index/index');
+import login = require('./login/login');
 
 'use strict';
 
@@ -24,5 +25,10 @@ angular.module(moduleName, [
                 url: '/actors',
                 template: actors.template,
                 controller: actors.controllerName
+            })
+            .state('base.login', {
+                url: '/login',
+                template: login.template,
+                controller: login.controllerName
             });
     }]);

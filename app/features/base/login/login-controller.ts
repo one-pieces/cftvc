@@ -1,29 +1,27 @@
 /// <reference path='../../../app.d.ts' />
 
-import actors = require('../../../static/data/actors');
 import config = require('config');
 import models = require('../../../components/models');
 
 'use strict';
 
 export interface IScope extends ng.IScope {
-    actors?: ActorsController;
+    login?: LoginController;
 }
 
-export var controllerName = config.appName + '.base.actors.controller';
+export var controllerName = config.appName + '.base.login.controller';
 
 /**
- * Controller for the actors page
+ * Controller for the login page
  */
-export class ActorsController {
+export class LoginController {
     static $inject = [ '$scope',
                        models.user.serviceName ];
-    actors = actors;
     currentUser: models.user.IUser;
 
     constructor(private $scope: IScope,
                 private UserModel: models.user.IUserStatic) {
-        $scope.actors = this;
+        $scope.login = this;
         this.UserModel.$find('_0_1').$then((user) => {
             user.ui.fullName = user.givenName + ' ' + user.familyName;
             this.currentUser = user;
@@ -32,4 +30,4 @@ export class ActorsController {
     }
 }
 
-export class Controller extends ActorsController {}
+export class Controller extends LoginController {}
