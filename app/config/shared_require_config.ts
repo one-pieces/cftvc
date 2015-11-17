@@ -10,6 +10,7 @@
         },
         paths: {
             angular: 'vendor/angular/angular',
+            'angular-bootstrap': 'vendor/angular-bootstrap/ui-bootstrap-tpls',
             bootstrap: 'vendor/bootstrap/bootstrap',
             'bootstrap-css': 'vendor/bootstrap-css/bootstrap.min',
             jquery: 'vendor/jquery/jquery',
@@ -25,6 +26,9 @@
             angular: {
                 deps: ['jquery'],
                 exports: 'angular'
+            },
+            'angular-bootstrap': {
+                deps: ['angular', 'bootstrap']
             },
             bootstrap: {
                 deps: ['jquery']
