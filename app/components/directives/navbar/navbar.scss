@@ -1,3 +1,20 @@
 .navbar {
-    
+    .input-group {
+        width: 200px;
+        font-size: 13px;
+        
+        input {
+            height: 25px;
+            border-top-left-radius: 85px;
+            border-bottom-left-radius: 85px;
+        }
+        .input-group-btn {
+            button {
+                width: 40px;
+                height: 25px;
+                border-top-right-radius: 85px;
+                border-bottom-right-radius: 85px;
+            }
+        }
+    }
 }
