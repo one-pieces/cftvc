@@ -1,9 +1,6 @@
-<div class="login row">
+<div class="login-page row">
     <div class="col-sm-6 login-section">
         <h1 class="login-label">登入</h1>
-        <!-- <div class="login-form">
-            <
-        </div> -->
         <form class="form-horizontal">
             <div class="form-group">
                 <label for="inputEmail3" class="col-sm-2 control-label">帐号</label>
@@ -23,12 +20,18 @@
                         <label>
                             <input type="checkbox"> 记住登录状态
                         </label>
+                        <a href="#" class="fr forget-password">忘记密码？</a>
                     </div>
                 </div>
             </div>
             <div class="form-group">
                 <div class="col-sm-offset-2 col-sm-10">
-                    <button type="submit" class="btn btn-default">登录</button>
+                    <button class="btn-lg btn-default btn-login">登录</button>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-sm-offset-2 col-sm-10">
+                    <button class="btn-lg btn-default" ui-sref="base.signup">注册</button>
                 </div>
             </div>
         </form>
@@ -38,6 +41,14 @@
                 <input class="sina-login">
                 <input class="qq-login">
             </div>
+        </div>
+    </div>
+    <div class="col-sm-6 login-imgs">
+        <div class="row">
+            <img src="/static/images/signin/mokoman_2.jpg">
+        </div>
+        <div class="row qr-code">
+            <img src="/static/images/signin/weixin.png">
         </div>
     </div>
 </div>

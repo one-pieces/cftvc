@@ -6,6 +6,7 @@ import base = require('./features/base/base');
 import config = require('config');
 import index = require('./index/index');
 import login = require('./login/login');
+import signup = require('./signup/signup');
 
 'use strict';
 
@@ -13,7 +14,9 @@ export var moduleName = config.appName + '.base.routes';
 
 angular.module(moduleName, [
     actors.moduleName,
-    index.moduleName])
+    index.moduleName,
+    login.moduleName,
+    signup.moduleName ])
     .config(['$stateProvider', ($stateProvider: ng.ui.IStateProvider) => {
         $stateProvider
             .state('base.index', {
@@ -30,5 +33,10 @@ angular.module(moduleName, [
                 url: '/login',
                 template: login.template,
                 controller: login.controllerName
+            })
+            .state('base.signup', {
+                url: '/signup',
+                template: signup.template,
+                controller: signup.controllerName
             });
     }]);

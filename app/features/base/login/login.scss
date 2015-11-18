@@ -1,4 +1,4 @@
-.login {
+.login-page {
     border: #bfbfbf solid 1px;
     padding: 10px;
     margin-top: 40px;
@@ -7,15 +7,36 @@
         padding: 7px 20px;
         .login-label {
             color: #0cf;
+            font-size: 50px;
             margin-top: 10px;
             margin-bottom: 20px;
         }
         form {
-            // padding-bottom: 10px;
             margin-bottom: 15px;
             border-bottom: #bbb dashed 1px;
+            button {
+                width: 100%;
+                font-size: 14px;
+                border-radius: 0px;
+                &.btn-login {
+                    color: #f09;
+                }
+            }
+            .form-control {
+                font-size: 13px;
+                border: 2px inset;
+                border-radius: 0px;
+                &:focus {
+                    border: #f09 solid 2px;
+                    box-shadow: none;
+                }
+            }
+            .checkbox {
+                font-size: 12px;
+            }
         }
         .other-login {
+            margin-bottom: 15px;
             .way-login {
                 text-align: center;
                 input {
@@ -24,12 +45,18 @@
                     margin-top: 10px;
                 }
                 .sina-login {
-                    background: url('/static/images/icons/sina_login_btn2.jpg') no-repeat;
+                    background: url('/static/images/signin/sina_login_btn2.jpg') no-repeat;
                 }
                 .qq-login {
-                    background: url('/static/images/icons/qq_login_btn2.jpg') no-repeat;
+                    background: url('/static/images/signin/qq_login_btn2.jpg') no-repeat;
                 }
             }
+        }
+    }
+    .login-imgs {
+        text-align: center;
+        img {
+            margin-top: 15px;
         }
     }
 }
