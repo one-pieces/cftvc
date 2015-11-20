@@ -23,3 +23,9 @@ exports.findUser = function(req, res, next) {
 
     res.json(user);
 }
+
+exports.login = function(req, res, next) {
+    var user = new User(req.body);
+
+    res.json(user);
+}

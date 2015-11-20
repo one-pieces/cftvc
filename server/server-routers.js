@@ -1,5 +1,7 @@
 var userController = require('./controllers/user-controller.js');
 
 module.exports = function(app) {
-    app.get('/api/v1/users/:id', userController.findUser);
+    app.post('/api/v1/user', userController.create);
+    app.post('/api/v1/user/login', userController.login);
+    app.get('/api/v1/user/:id', userController.findUser);
 };

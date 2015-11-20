@@ -1,17 +1,17 @@
 <div class="login-page row">
     <div class="col-sm-6 login-section">
         <h1 class="login-label">登入</h1>
-        <form class="form-horizontal">
+        <form class="form-horizontal" ng-submit="login.submit()">
             <div class="form-group">
                 <label for="inputEmail3" class="col-sm-2 control-label">帐号</label>
                 <div class="col-sm-10">
-                    <input class="form-control" id="inputEmail3" placeholder="手机号码/邮箱">
+                    <input class="form-control" name="username" placeholder="手机号码/邮箱" ng-model="login.user.username">
                 </div>
             </div>
             <div class="form-group">
                 <label for="inputPassword3" class="col-sm-2 control-label">密码</label>
                 <div class="col-sm-10">
-                    <input type="password" class="form-control" id="inputPassword3" placeholder="输入密码">
+                    <input type="password" class="form-control" name="password" placeholder="输入密码" ng-model="login.user.password">
                 </div>
             </div>
             <div class="form-group">
@@ -26,7 +26,7 @@
             </div>
             <div class="form-group">
                 <div class="col-sm-offset-2 col-sm-10">
-                    <button class="btn-lg btn-default btn-login">登录</button>
+                    <button class="btn-lg btn-default btn-login" type="submit">登录</button>
                 </div>
             </div>
             <div class="form-group">
