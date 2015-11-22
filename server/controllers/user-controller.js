@@ -13,19 +13,17 @@ exports.create = function(req, res, next) {
 };
 
 exports.findUser = function(req, res, next) {
-    var user = new User({
-        givenName: 'Xiaolong',
-        familyName: 'Lin',
-        email: 'linifftwe@163.com',
-        userName: 'xiaolonglin',
-        password: 'changeme'
-    });
+    var userId = req.params.id;
 
-    res.json(user);
+    User.findOne({_id: userId}, function(err, user) {
+        res.json(user);
+    });
 }
 
 exports.login = function(req, res, next) {
     var user = new User(req.body);
 
-    res.json(user);
+    User.findOne({username: user.username}, function(err, user) {
+        res.json(user);
+    })
 }

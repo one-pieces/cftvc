@@ -11,12 +11,16 @@ import modelsModule = require('../models-module');
 export var serviceName = modelNames.USER;
 
 export interface ILearnUser {
-    id?: string;
+    _id?: string;
     username: string;
-    password: string;
-    email: string;
     givenName: string;
     familyName: string;
+    mobile: string;
+    email: string;
+    brithday: string;
+    nickname: string;
+    location: string;
+    sex: string;
 }
 
 /**
@@ -52,7 +56,15 @@ modelsModule
         var API_PATH = config.apiBasePath + '/v1/user';
 
         var UserModel = restmod.model(API_PATH).mix({
-            ui: { mask: true, init: () => { return {}; } },
+            ui: { mask: true, init: () => { 
+                    // var fullName = this.familyName + this.givnName;
+                    // console.log(this.familyName);
+                    // return {
+                    //     fullName: fullName
+                    // }; 
+                    return {}; 
+                } 
+            },
             $extend: {
                 Collection: {
                     sortUsers: function() {
@@ -71,7 +83,6 @@ modelsModule
             // Attention!!! The common api is not accesible as static methods anymore, 
             // this is because the common api is not stateless and static methods should be stateless.
             // So you need to new a instance.
-            console.log(user);
             this.$new().$send({
                 method: 'POST',
                 url: this.$url() + '/login',

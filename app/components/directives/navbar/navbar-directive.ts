@@ -3,6 +3,8 @@
 /// <amd-dependency path='text!components/directives/navbar/navbar.html' />
 import angular = require('angular');
 import config = require('config');
+import contextService = require('../../services/context/context-service');
+import models = require('../../models');
 
 'use strict';
 
@@ -21,9 +23,25 @@ export interface IScope extends ng.IScope {
  * Navbar class for the directive
  */
 export class Navbar {
-    static $inject = ['scope'];
+    static $inject = [ 'scope', 
+                       contextService.serviceName,
+                       models.user.serviceName ];
 
-    constructor(private scope: IScope) {
+    user: models.user.IUser;
+    constructor(private scope: IScope,
+                private context: contextService.Service,
+                private UserModel: models.user.IUserStatic) {
+        context.getUser().then((user) => {
+            this.user = user;
+        console.log(this.user);
+        });
+        scope.$on('login-success', () => {
+            context.getUser().then((user) => {
+                this.user = user;
+            });
+            console.log('navbar');
+            console.log(this.user);
+        });
     }
 }
 
@@ -61,7 +79,7 @@ export class NavbarDirective implements ng.IDirective {
     }
 }
 
-angular.module(moduleName, [])
+angular.module(moduleName, [contextService.moduleName])
     .directive(directiveName, ['$injector', ($injector: ng.auto.IInjectorService) => {
         return $injector.instantiate(NavbarDirective);
     }]);

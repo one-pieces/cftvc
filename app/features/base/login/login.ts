@@ -4,6 +4,7 @@
 
 import angular = require('angular');
 import config = require('config');
+import contextService = require('../../../components/services/context/context-service');
 import loginController = require('./login-controller');
 
 'use strict';
@@ -12,5 +13,5 @@ export var moduleName = config.appName + '.base.login';
 export var template = window.require('text!features/base/login/login.html');
 export var controllerName = loginController.controllerName;
 
-angular.module(moduleName, [])
+angular.module(moduleName, ['ui.router',contextService.moduleName])
     .controller(loginController.controllerName, loginController.Controller);
