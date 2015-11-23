@@ -33,7 +33,7 @@ export class Navbar {
                 private UserModel: models.user.IUserStatic) {
         context.getUser().then((user) => {
             this.user = user;
-        console.log(this.user);
+            console.log(this.user);
         });
         scope.$on('login-success', () => {
             context.getUser().then((user) => {

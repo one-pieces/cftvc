@@ -24,7 +24,6 @@ export class Avatar {
 
     radius: number;
     constructor(private scope: IScope) {
-        console.log(scope.radius);
         switch (scope.radius) {
             case 'small':
                 this.radius = 36;

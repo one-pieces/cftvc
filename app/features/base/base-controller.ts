@@ -43,11 +43,6 @@ export class BaseController {
     constructor(private $scope: IScope,
                 private UserModel: models.user.IUserStatic) {
         $scope.base = this;
-        this.UserModel.$find('_0_1').$then((user) => {
-            user.ui.fullName = user.givenName + ' ' + user.familyName;
-            this.currentUser = user;
-            console.log('return user success, user info: ' + user.givenName);
-        });
     }
 }
 

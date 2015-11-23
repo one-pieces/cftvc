@@ -16,7 +16,7 @@ exports.findUser = function(req, res, next) {
     var userId = req.params.id;
 
     User.findOne({_id: userId}, function(err, user) {
-        res.json(user);
+        res.send(user);
     });
 }
 
@@ -24,6 +24,6 @@ exports.login = function(req, res, next) {
     var user = new User(req.body);
 
     User.findOne({username: user.username}, function(err, user) {
-        res.json(user);
+        res.send(user);
     })
 }

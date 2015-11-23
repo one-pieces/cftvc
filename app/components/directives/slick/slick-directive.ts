@@ -148,7 +148,6 @@ export class SlickDirective implements ng.IDirective {
             });
         }
 
-        console.log(scope.slidesToShow);
         if (scope.initOnload) {
             // isInitialized = false;
             scope.$watch('data', (newVal: any[], oldVal: any[]) => {

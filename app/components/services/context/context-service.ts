@@ -1,4 +1,5 @@
 /// <reference path='../../../app.d.ts' />
+/// <amd-dependency path='md5' />
 
 import angular = require('angular');
 import config = require('config');
@@ -12,11 +13,14 @@ export var serviceName = 'context';
  * Angular service used by XXXX(service name) as utility functions.
  */
 export class ContextService {
-    static $inject = ['$q', models.user.serviceName];
+    static $inject = [ '$q',
+                       'md5',
+                       models.user.serviceName];
 
     private user: models.user.IUser;
     
     constructor( private $q: ng.IQService,
+                 private md5: any,
                  private UserModel: models.user.IUserStatic) {
 
     }
@@ -26,6 +30,7 @@ export class ContextService {
      */
     login(userInfo: any): ng.IPromise<models.user.IUser> {
         var deferred = this.$q.defer();
+        userInfo.password = this.md5.createHash(userInfo.password);
         this.UserModel.login(userInfo).then((user: models.user.IUser) => {
             this.user = user;
             (<any>window.sessionStorage).userId = user._id;
@@ -50,6 +55,6 @@ export class ContextService {
 
 export class Service extends ContextService {}
 
-angular.module(moduleName, [])
+angular.module(moduleName, ['ngMd5'])
     .service(serviceName, ContextService);
 
