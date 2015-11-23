@@ -30,7 +30,7 @@ export class ContextService {
      */
     login(userInfo: any): ng.IPromise<models.user.IUser> {
         var deferred = this.$q.defer();
-        userInfo.password = this.md5.createHash(userInfo.password);
+        userInfo.password = this.md5.createHash(userInfo.password || '');
         this.UserModel.login(userInfo).then((user: models.user.IUser) => {
             this.user = user;
             (<any>window.sessionStorage).userId = user._id;
@@ -42,8 +42,9 @@ export class ContextService {
     }
 
     getUser(): ng.IPromise<models.user.IUser> {
-        if (!this.user) {
-            return this.UserModel.$find((<any>window.sessionStorage).userId).$then((user) => {
+        var userId = (<any>window.sessionStorage).userId;
+        if (!this.user && userId) {
+            return this.UserModel.$find(userId).$then((user) => {
                 this.user = user;
                 return this.user;
             }).$asPromise();
