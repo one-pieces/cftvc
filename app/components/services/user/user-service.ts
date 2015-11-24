@@ -6,13 +6,13 @@ import config = require('config');
 import models = require('../../models');
 'use strict';
 
-export var moduleName = config.appName + '.components.services.context';
-export var serviceName = 'context';
+export var moduleName = config.appName + '.components.services.user';
+export var serviceName = 'user';
 
 /**
- * Angular service used by XXXX(service name) as utility functions.
+ * User service
  */
-export class ContextService {
+export class UserService {
     static $inject = [ '$q',
                        'md5',
                        models.user.serviceName];
@@ -41,6 +41,22 @@ export class ContextService {
         return deferred.promise;
     }
 
+    signup(userInfo: models.user.IUser): ng.IPromise<models.user.IUser> {
+        var deferred = this.$q.defer();
+        userInfo.password = this.md5.createHash(userInfo.password || '');
+        userInfo.$save().$then((user: models.user.IUser) => {
+            deferred.resolve(user);
+        }, (reason: any) => {
+            deferred.reject(reason);
+        });
+        return deferred.promise;
+    }
+
+    signout() {
+        this.user = null;
+        delete (<any>window.sessionStorage).userId;
+    }
+
     getUser(): ng.IPromise<models.user.IUser> {
         var userId = (<any>window.sessionStorage).userId;
         if (!this.user && userId) {
@@ -54,8 +70,8 @@ export class ContextService {
     }
 }
 
-export class Service extends ContextService {}
+export class Service extends UserService {}
 
 angular.module(moduleName, ['ngMd5'])
-    .service(serviceName, ContextService);
+    .service(serviceName, UserService);
 

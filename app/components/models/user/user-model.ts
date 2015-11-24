@@ -12,6 +12,7 @@ export var serviceName = modelNames.USER;
 
 export interface ILearnUser {
     _id?: string;
+    password?: string;
     username: string;
     givenName: string;
     familyName: string;
@@ -94,7 +95,7 @@ modelsModule
                 }
                 deferred.resolve(response.data);
             }, (error: any) => {
-                deferred.reject(error);
+                deferred.reject(error.data);
             });
             return deferred.promise;
         };

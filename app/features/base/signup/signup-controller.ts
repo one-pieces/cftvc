@@ -2,6 +2,7 @@
 
 import config = require('config');
 import models = require('../../../components/models');
+import userService = require('../../../components/services/user/user-service');
 
 'use strict';
 
@@ -16,14 +17,18 @@ export var controllerName = config.appName + '.base.signup.controller';
  */
 export class SignupController {
     static $inject = [ '$scope',
-                       models.user.serviceName ];
+                       '$state',
+                       models.user.serviceName,
+                       userService.serviceName ];
     user: models.user.IUser;
     mobileCaptcha: string;
     captcha: string;
     password2: string;
 
     constructor(private $scope: IScope,
-                private UserModel: models.user.IUserStatic) {
+                private $state: ng.ui.IStateService,
+                private UserModel: models.user.IUserStatic,
+                private userService: userService.Service) {
         $scope.signup = this;
         this.user = this.UserModel.$build({
             username: '',
@@ -34,16 +39,14 @@ export class SignupController {
             location: '',
             sex: ''
         });
-        // this.UserModel.$find('_0_1').$then((user) => {
-        //     user.ui.fullName = user.givenName + ' ' + user.familyName;
-        //     this.currentUser = user;
-        //     console.log('return user success, user info: ' + user.givenName);
-        // });
     }
 
     submit() {
-        this.user.$save().$then((user) => {
-            this.user = user;
+        this.userService.signup(this.user).then((user) => {
+            this.$scope.$root.$broadcast('sign-action');
+            this.$state.go('base.login');
+        }, (reason: any) => {
+            console.log(reason);
         });
     }
 }

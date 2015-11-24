@@ -2,7 +2,7 @@
 
 import config = require('config');
 import models = require('../../../components/models');
-import contextService = require('../../../components/services/context/context-service');
+import userService = require('../../../components/services/user/user-service');
 
 'use strict';
 
@@ -18,12 +18,12 @@ export var controllerName = config.appName + '.base.login.controller';
 export class LoginController {
     static $inject = [ '$scope',
                        '$state',
-                       contextService.serviceName ];
+                       userService.serviceName ];
     userInfo: any;
 
     constructor(private $scope: IScope,
                 private $state: ng.ui.IStateService,
-                private context: contextService.Service) {
+                private userService: userService.Service) {
         $scope.login = this;
         this.userInfo = {
             username: '',
@@ -32,9 +32,8 @@ export class LoginController {
     }
 
     submit() {
-        this.context.login(this.userInfo).then((user) => {
-            console.log(user);
-            this.$scope.$root.$broadcast('login-success');
+        this.userService.login(this.userInfo).then((user) => {
+            this.$scope.$root.$broadcast('sign-action');
             this.$state.go('base.index');
         }, (reason: any) => {
             console.log(reason);

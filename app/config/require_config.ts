@@ -6,7 +6,7 @@
         throw err;
     };
 
-    requirejs.config({
+    require.config({
         baseUrl: './',
         paths: {
             shared_require_config: 'config/shared_require_config'

@@ -2,10 +2,12 @@ var mongoose = require('mongoose');
 var express = require('express');
 var morgan = require('morgan');
 var compress = require('compression');
+var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var path = require('path');
 var ejs = require('ejs');
 var session = require('express-session');
+var mongoStore = require('connect-mongo')(session);
 
 var config = require('../config/config.js');
 var serverMode = require('./server_mode.js');
@@ -25,10 +27,15 @@ exports.createApp = function(callback) {
         extended: true
     }));
     app.use(bodyParser.json());
+    app.use(cookieParser());
     app.use(session({
         saveUninitialized: true,
         resave: true,
-        secret: config.sessionSecret
+        secret: config.sessionSecret,
+        store: new mongoStore({
+            url: config.db,
+            collection: 'sessions'
+        })
     }));
 
     app.set('port', process.env.PORT);

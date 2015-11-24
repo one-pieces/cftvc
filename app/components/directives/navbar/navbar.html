@@ -36,7 +36,7 @@
                     <span>{{navbar.user.nickname}}, 欢迎回来！</span>
                 </li>
                 <li ng-show="navbar.user">
-                    <a href="#" ui-sref="base.login">退出</a>
+                    <a href="#" ng-click="navbar.signout()">退出</a>
                 </li>
             </ul>
         </div>
