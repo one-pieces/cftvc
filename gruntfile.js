@@ -34,6 +34,13 @@ module.exports = function(grunt) {
 			}
 		},
 
+		clean: {
+	    	//Cleaning bower_components is required to remove references to old components, which can interfere with bower being able to find
+	    	//a suitable version of a component
+	    	bower: [ 'bower_components' ],
+	    	develop: [ 'build/develop' ],
+		},
+
 		// sass
 		sass: {
 			build: {
@@ -174,9 +181,9 @@ module.exports = function(grunt) {
 	});
 
 	// 注册任务
-	grunt.registerTask('build', ['ts:build', 'sass:build']);
+	grunt.registerTask('build', ['clean:develop', 'ts:build', 'sass:build']);
 	grunt.registerTask('develop', ['concurrent']);
 	grunt.registerTask('update', ['bower', 'build']);
-	grunt.registerTask('compress js', ['jshint', 'uglify']);
-	grunt.registerTask('compress css', ['csslint', 'cssmin']);
+	// grunt.registerTask('compress js', ['jshint', 'uglify']);
+	// grunt.registerTask('compress css', ['csslint', 'cssmin']);
 };
