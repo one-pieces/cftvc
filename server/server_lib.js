@@ -39,6 +39,7 @@ exports.createApp = function(callback) {
     // app.use(express.static(path.join(__dirname, 'app')));
     app.use(express.static('./app'));
     app.use(express.static(staticPath)); //Serve compiled files out of build
+    app.use('/app', express.static(path.join(__dirname, '../app'))); //Workaround for loading ts files for the chrome debugger
 
     require('./server-routers.js')(app);
 
