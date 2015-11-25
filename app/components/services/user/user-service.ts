@@ -28,13 +28,12 @@ export class UserService {
     /**
      *  
      */
-    login(userInfo: any): ng.IPromise<models.user.IUser> {
+    login(userInfo: any): ng.IPromise<string> {
         var deferred = this.$q.defer();
         userInfo.password = this.md5.createHash(userInfo.password || '');
-        this.UserModel.login(userInfo).then((user: models.user.IUser) => {
-            this.user = user;
-            (<any>window.sessionStorage).userId = user._id;
-            deferred.resolve(user);
+        this.UserModel.login(userInfo).then((token: string) => {
+            (<any>window.sessionStorage).token = token;
+            deferred.resolve(token);
         }, (reason: any) => {
             deferred.reject(reason);
         });

@@ -1,6 +1,8 @@
 var mongoose = require('mongoose');
 var bcrypt = require('bcrypt');
+var jwt = require('jsonwebtoken');
 var SALT_WORK_FACTOR = 0;
+var JWT_SECRET = 'op';
 var Schema = mongoose.Schema;
 
 var UserSchema = new Schema({
@@ -41,6 +43,8 @@ UserSchema.pre('save', function(next) {
     } else {
         this.meta.updateAt = Date.now();
     }
+
+    user.token = jwt.sign(user, JWT_SECRET);
 
     if (!user.isModified('password')) {
         return next();

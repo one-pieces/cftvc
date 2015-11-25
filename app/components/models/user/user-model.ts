@@ -79,8 +79,9 @@ modelsModule
             }
         });
 
+        // Return a token
         (<any>UserModel).login = function(user: IUser) {
-            var deferred = $q.defer<IUser>();
+            var deferred = $q.defer<string>();
             // Attention!!! The common api is not accesible as static methods anymore, 
             // this is because the common api is not stateless and static methods should be stateless.
             // So you need to new a instance.
@@ -89,10 +90,6 @@ modelsModule
                 url: this.$url() + '/login',
                 data: user
             }, (response: any) => {
-                // For mock server db we must have an id, delete the id here
-                if(response.data.id) {
-                  delete response.data.id;
-                }
                 deferred.resolve(response.data);
             }, (error: any) => {
                 deferred.reject(error.data);

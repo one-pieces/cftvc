@@ -1,6 +1,6 @@
 var User = require('../models/user-model.js');
 
-exports.create = function(req, res, next) {
+exports.signup = function(req, res, next) {
     var user = new User(req.body);
 
     user.save(function(err) {
@@ -11,6 +11,10 @@ exports.create = function(req, res, next) {
         }
     });
 };
+
+exports.findCurrentUser = function(req, res, next) {
+    
+}
 
 exports.findUser = function(req, res, next) {
     var userId = req.params.id;
@@ -38,7 +42,7 @@ exports.login = function(req, res, next) {
                         res.json("Error occured: " + err);
                     } else {
                         if (isMatch) {
-                            res.json(user);
+                            res.json(user.token);
                         } else {
                             res.status(404);
                             res.json('Password is not matched.');
