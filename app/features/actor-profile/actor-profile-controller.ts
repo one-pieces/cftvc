@@ -36,11 +36,13 @@ export class ActorProfileController {
         $scope.actorProfile = this;
         this.actorId = (<IStateParams>$state.params).id;
         this.actor = this.actors[parseInt(this.actorId, 10)];
-        this.UserModel.$find('_0_1').$then((user) => {
-            user.ui.fullName = user.givenName + ' ' + user.familyName;
-            this.currentUser = user;
-            console.log('return user success, user info: ' + user.givenName);
-        });
+        // this.UserModel.$find('_0_1').$then((user) => {
+        //     user.ui.fullName = user.givenName + ' ' + user.familyName;
+        //     this.currentUser = user;
+        //     console.log('return user success, user info: ' + user.givenName);
+        // }, (rejection: any) => {
+        //     console.log(rejection.$response.data);
+        // });
     }
 }
 

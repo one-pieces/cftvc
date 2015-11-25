@@ -52,11 +52,6 @@ export class CreatorProfileController {
         $scope.creatorProfile = this;
         this.creatorId = (<IStateParams>$state.params).id;
         this.creator = this.creators[parseInt(this.creatorId, 10)];
-        this.UserModel.$find('_0_1').$then((user) => {
-            user.ui.fullName = user.givenName + ' ' + user.familyName;
-            this.currentUser = user;
-            console.log('return user success, user info: ' + user.givenName);
-        });
     }
 }
 

@@ -39,11 +39,6 @@ export class VideoDescriptionController {
         this.videoId = (<IStateParams>$state.params).id;
         this.video = this.videos[parseInt(this.videoId, 10)];
         this.creator = creators[this.video.creatorId];
-        this.UserModel.$find('_0_1').$then((user) => {
-            user.ui.fullName = user.givenName + ' ' + user.familyName;
-            this.currentUser = user;
-            console.log('return user success, user info: ' + user.givenName);
-        });
     }
 }
 
