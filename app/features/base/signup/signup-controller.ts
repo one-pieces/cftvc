@@ -43,7 +43,6 @@ export class SignupController {
 
     submit() {
         this.userService.signup(this.user).then((user) => {
-            this.$scope.$root.$broadcast('sign-action');
             this.$state.go('base.login');
         }, (reason: any) => {
             console.log(reason);

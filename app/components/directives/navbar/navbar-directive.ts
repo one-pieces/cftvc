@@ -31,20 +31,18 @@ export class Navbar {
     constructor(private scope: IScope,
                 private userService: userService.Service,
                 private UserModel: models.user.IUserStatic) {
-        userService.getUser().then((user) => {
-            this.user = user;
-            console.log(this.user);
-        });
+        this.getUser();
         scope.$on('sign-action', () => {
-            userService.getUser().then((user) => {
-                this.user = user;
-            });
+            this.getUser();
         });
     }
 
     signout() {
         this.userService.signout();
-        this.userService.getUser().then((user) => {
+    }
+
+    getUser() {
+        this.userService.me().then((user) => {
             this.user = user;
         });
     }

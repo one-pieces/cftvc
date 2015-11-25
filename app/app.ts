@@ -20,15 +20,40 @@ var app = angular.module(moduleName, [
     avatarDirective.moduleName,
     confirmationNeededDirective.moduleName]);
 
-app.config(['$urlRouterProvider', '$stateProvider', '$locationProvider', 
+app.config(['$urlRouterProvider', 
+            '$stateProvider', 
+            '$locationProvider', 
+            '$httpProvider',
     function($urlRouterProvider: ng.ui.IUrlRouterProvider, 
         $stateProvider: ng.ui.IStateProvider, 
-        $locationProvider: ng.ILocationProvider) {
+        $locationProvider: ng.ILocationProvider,
+        $httpProvider: ng.IHttpProvider) {
         $urlRouterProvider
             .when('/', config.basePath)
             .otherwise(config.basePath);
 
         $locationProvider.html5Mode(true);
+
+        // All requests will be intercepted to put the authorization into the request header
+        $httpProvider.interceptors.push(['$q', '$injector', function($q, $injector) {
+            return {
+                'request': function(config) {
+                    config.headers = config.headers || {};
+                    var token = (<any>window.sessionStorage).token;
+                    if (token) {
+                        (<any>config.headers).Authorization = 'Bearer ' + token;
+                    }
+                    return config;
+                },
+                'responseError': function(rejection) {
+                    if (rejection.status === 401 || rejection.status === 403) {
+                        var stateService = $injector.get('$state');
+                        stateService.go('base.login');
+                    }
+                    return $q.reject(rejection);
+                }
+            }
+        }]);
     }]);
 
 export function init() {   

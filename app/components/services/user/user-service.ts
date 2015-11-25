@@ -15,12 +15,14 @@ export var serviceName = 'user';
 export class UserService {
     static $inject = [ '$q',
                        'md5',
+                       '$rootScope',
                        models.user.serviceName];
 
     private user: models.user.IUser;
     
     constructor( private $q: ng.IQService,
                  private md5: any,
+                 private $rootScope: ng.IRootScopeService,
                  private UserModel: models.user.IUserStatic) {
 
     }
@@ -31,8 +33,9 @@ export class UserService {
     login(userInfo: any): ng.IPromise<string> {
         var deferred = this.$q.defer();
         userInfo.password = this.md5.createHash(userInfo.password || '');
-        this.UserModel.login(userInfo).then((token: string) => {
+        this.UserModel.login(userInfo).then((token) => {
             (<any>window.sessionStorage).token = token;
+            this.$rootScope.$broadcast('sign-action');
             deferred.resolve(token);
         }, (reason: any) => {
             deferred.reject(reason);
@@ -53,13 +56,14 @@ export class UserService {
 
     signout() {
         this.user = null;
-        delete (<any>window.sessionStorage).userId;
+        delete (<any>window.sessionStorage).token;
+        this.$rootScope.$broadcast('sign-action');
     }
 
-    getUser(): ng.IPromise<models.user.IUser> {
-        var userId = (<any>window.sessionStorage).userId;
-        if (!this.user && userId) {
-            return this.UserModel.$find(userId).$then((user) => {
+    me(): ng.IPromise<models.user.IUser> {
+        var token = (<any>window.sessionStorage).token;
+        if (!this.user && token) {
+            return this.UserModel.$find('me').$then((user) => {
                 this.user = user;
                 return this.user;
             }).$asPromise();

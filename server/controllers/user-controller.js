@@ -12,22 +12,37 @@ exports.signup = function(req, res, next) {
     });
 };
 
-exports.findCurrentUser = function(req, res, next) {
-    
+exports.me = function(req, res, next) {
+    User.findOne({token: req.token}, function(err, user) {
+        if (err) {
+            res.status(400);
+            res.json("Error occured: " + err);
+        } else {
+            var _user = user;
+            delete _user.password;
+            res.json(_user);
+        }
+    });
 }
 
-exports.findUser = function(req, res, next) {
+exports.findById = function(req, res, next) {
     var userId = req.params.id;
 
-    User.findOne({_id: userId}, function(err, user) {
-        res.json(user);
+    User.findById(userId, function(err, user) {
+        if (user) {
+            var _user = user;
+            delete _user.password;
+            res.json(_user);
+        } else {
+            res.status(404);
+            res.json("Can't find the user.");
+        }
     });
 }
 
 exports.login = function(req, res, next) {
     var _user = new User(req.body);
     User.findOne({username: _user.username}, function(err, user) {
-        console.log(err);
         if (err) {
             res.status(400);
             res.json("Error occured: " + err);
