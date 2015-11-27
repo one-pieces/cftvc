@@ -1,0 +1,52 @@
+<form class="form-horizontal">
+    <div class="form-group">
+        <label for="username" class="col-sm-3 control-label">用户名</label>
+        <div class="col-sm-9">
+            <input class="form-control" name="username" placeholder="" ng-model="signup.user.username">
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="familyName" class="col-sm-3 control-label">姓氏</label>
+        <div class="col-sm-4">
+            <input class="form-control" name="familyName" placeholder="姓氏" ng-model="signup.user.familyName">
+        </div>
+        <div class="col-sm-5">
+            <input class="form-control" name="givenName" placeholder="名字" ng-model="signup.user.givenName">
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="nickname" class="col-sm-3 control-label">昵称</label>
+        <div class="col-sm-9">
+            <input class="form-control" name="nickname" placeholder="" ng-model="signup.user.nickname">
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="sex" class="col-sm-3 control-label">性别</label>
+        <div class="col-sm-9">
+            <input class="form-control" name="sex" placeholder="" ng-model="signup.user.sex">
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="mobile" class="col-sm-3 control-label">手机号码</label>
+        <div class="col-sm-9">
+            <input class="form-control" name="mobile" placeholder="" ng-model="signup.user.mobile">
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="password" class="col-sm-3 control-label">密码</label>
+        <div class="col-sm-9">
+            <input type="password" class="form-control" name="password" placeholder="" ng-model="signup.user.password">
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="password2" class="col-sm-3 control-label">确认密码</label>
+        <div class="col-sm-9">
+            <input type="password" class="form-control" name="password2" placeholder="" ng-model="signup.password2">
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="col-sm-offset-3 col-sm-9">
+            <button class="btn-lg btn-default" ui-sref="base.signup.rolerInfo({role: 'actor'})">下一步</button>
+        </div>
+    </div>
+</form>
