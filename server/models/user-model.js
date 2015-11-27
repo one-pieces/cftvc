@@ -13,7 +13,8 @@ var UserSchema = new Schema({
     mobile: String,
     brithday: String,
     location: String,
-    sex: String,
+    gender: String,
+    role: String,
     username: {
         unique: true,
         require: true,

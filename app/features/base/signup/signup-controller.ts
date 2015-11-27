@@ -31,13 +31,14 @@ export class SignupController {
                 private userService: userService.Service) {
         $scope.signup = this;
         this.user = this.UserModel.$build({
-            username: 'aaa',
+            username: '',
             mobile: '',
             email: '',
             brithday: '',
             nickname: '',
             location: '',
-            sex: ''
+            gender: '',
+            role: ''
         });
     }
 

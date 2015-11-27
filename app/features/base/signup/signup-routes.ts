@@ -47,7 +47,7 @@ angular.module(moduleName, [])
                             template = creatorInfoTemplate;
                             break;
                         default:
-                            template = creatorInfoTemplate;
+                            template = actorInfoTemplate;
                             break;
                     }
                     return template;

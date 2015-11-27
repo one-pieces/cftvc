@@ -21,7 +21,13 @@ export interface ILearnUser {
     brithday: string;
     nickname: string;
     location: string;
-    sex: string;
+    gender: string;
+    role: string;
+    meta: {
+        createAt: Date;
+        updateAt: Date;
+    };
+
 }
 
 /**
@@ -71,7 +77,7 @@ modelsModule
                     sortUsers: function() {
                         return this.$action(function() {
                             this.sort(function(one: IUser, other: IUser) {
-                                return one.username < other.username ? -1 : 1;
+                                return one.meta.createAt < other.meta.createAt ? -1 : 1;
                             });
                         });
                     }
