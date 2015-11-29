@@ -27,7 +27,6 @@ export interface ILearnUser {
         createAt: Date;
         updateAt: Date;
     };
-
 }
 
 /**
