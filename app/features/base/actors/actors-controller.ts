@@ -1,13 +1,12 @@
 /// <reference path='../../../app.d.ts' />
 
-import actors = require('../../../static/data/actors');
 import config = require('config');
 import models = require('../../../components/models');
 
 'use strict';
 
 export interface IScope extends ng.IScope {
-    actors?: ActorsController;
+    actorsPage?: ActorsController;
 }
 
 export var controllerName = config.appName + '.base.actors.controller';
@@ -17,18 +16,15 @@ export var controllerName = config.appName + '.base.actors.controller';
  */
 export class ActorsController {
     static $inject = [ '$scope',
-                       models.user.serviceName ];
-    actors = actors;
-    currentUser: models.user.IUser;
+                       models.actor.serviceName ];
+    actors: models.actor.IActorCollection;
 
     constructor(private $scope: IScope,
-                private UserModel: models.user.IUserStatic) {
-        $scope.actors = this;
-        // this.UserModel.$find('_0_1').$then((user) => {
-        //     user.ui.fullName = user.givenName + ' ' + user.familyName;
-        //     this.currentUser = user;
-        //     console.log('return user success, user info: ' + user.givenName);
-        // });
+                private ActorModel: models.actor.IActorStatic) {
+        $scope.actorsPage = this;
+        this.ActorModel.$collection().$fetch().$then((actors) => {
+            this.actors = <models.actor.IActorCollection>actors;
+        });
     }
 }
 
