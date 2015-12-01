@@ -59,38 +59,28 @@ exports.createApp = function(callback) {
     return app;
 };
 
-// exports.createDb = function(callback) {
-//     console.log(config.db);
-//     db = mongoose.connect(config.db);
-//     return db;
-// };
+exports.createDb = function(callback) {
+    console.log(config.db);
+    db = mongoose.connect(config.db);
+    return db;
+};
 
-exports.createDbAndLoadData = function() {
-    if (db == null) {
-        db = mongoose.connect(config.db);
-
-        var dataFiles = glob.sync(__dirname + '/data/default/**/*.json');
-        dataFiles.forEach(function(dataFile) {
-            fs.readFile(dataFile, function(err, fileData) {
-                var dataJson = JSON.parse(fileData);
+exports.reloadData = function(callback) {
+    var ab = require('asyncblock');
+    ab(function() {
+        if (db == null) {
+            db = mongoose.connect(config.db);
+            var dataFiles = glob.sync(__dirname + '/data/default/**/*.json');
+            dataFiles.forEach(function(dataFile) {
+                var dataJson = JSON.parse(fs.readFileSync(dataFile));
                 var Model = require('./models/' + dataJson.model);
-                Model.remove({}, function(err) {
-                    dataJson.data.forEach(function(data) {
-                        var dataModel = new Model(data);
-                        dataModel.save(function(err, data) {
-                            if (err) {
-                                console.log(err);
-                            }
-                            // if (err) {
-                            //     console.log(err);
-                            // } else {
-                            //     console.log(data.role + '_' + data._id + 'has been loaded successfully.');
-                            // }
-                        });
-                    });
+                Model.remove({}).sync();
+                dataJson.data.forEach(function(data) {
+                    var dataModel = new Model(data);
+                    dataModel.save().sync();
                 });
             });
-        });
-    }
-    return db;
+        }
+        return db;
+    }, callback);
 };

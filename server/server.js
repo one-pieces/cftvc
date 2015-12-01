@@ -8,7 +8,7 @@ process.env.PORT = config.server.port || 5000;
 
 var serverLib = require('./server_lib.js');
 
-var db = serverLib.createDbAndLoadData();
+var db = serverLib.createDb();
 var app = serverLib.createApp();
 var server = require('http').createServer(app);
 

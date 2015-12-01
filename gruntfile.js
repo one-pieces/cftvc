@@ -12,6 +12,13 @@
 **/
 
 'use strict';
+var ab = require('asyncblock');
+//If the enableTransform method is called like this, it can be used to transform the current module if it was loaded standalone
+//This effectively "returns" from the original loading of this module, then asyncblock loads and runs the transformed version
+//If you just want to enable the syntax transform on all modules loaded from this point on, just call asyncblock.enableTransform()
+if (ab.enableTransform(module)) {
+  return;
+}
 // 包装函数 
 module.exports = function(grunt) {
 	// 使用该插件，就不需要手动grunt.loadNpmTasks其他以grunt-*开头的插件，详情请看http://www.tuicool.com/articles/yABV73
@@ -184,6 +191,9 @@ module.exports = function(grunt) {
 	grunt.registerTask('build', ['clean:develop', 'ts:build', 'sass:build']);
 	grunt.registerTask('develop', ['concurrent']);
 	grunt.registerTask('update', ['bower', 'build']);
+	grunt.registerTask('db:reload', function() {
+		require('./server/server_lib').reloadData(this.async());
+	});
 	// grunt.registerTask('compress js', ['jshint', 'uglify']);
 	// grunt.registerTask('compress css', ['csslint', 'cssmin']);
 };

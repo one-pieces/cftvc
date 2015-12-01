@@ -8,8 +8,9 @@ How to Set Up:
 3. npm install
 4. bower install
 5. grunt update
-6. grunt develop
-7. 浏览器输入localhost:5000/cftvc
+6. grunt db:reload
+7. grunt develop
+8. 浏览器输入localhost:5000/cftvc
 
 This project has used MEAN(Mongo, Express, AngularJS, NodeJS) framework. The following is the file structure:
 
