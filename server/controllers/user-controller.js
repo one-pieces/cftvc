@@ -1,4 +1,4 @@
-var User = require('../models/user-model.js');
+var User = require('../models/user-model');
 var fs = require('fs');
 var path = require('path');
 var mkdirp = require('mkdirp');
@@ -47,7 +47,7 @@ exports.findById = function(req, res, next) {
                 res.json(_user);
             } else {
                 res.status(404);
-                res,json("Can't find the user.");
+                res.json("Can't find the user.");
             }
         }
     });

@@ -17,6 +17,7 @@ export class UserService {
                        'md5',
                        '$rootScope',
                        models.actor.serviceName,
+                       models.creator.serviceName,
                        models.user.serviceName];
 
     private user: models.user.IUser;
@@ -25,6 +26,7 @@ export class UserService {
                  private md5: any,
                  private $rootScope: ng.IRootScopeService,
                  private ActorModel: models.actor.IActorStatic,
+                 private CreatorModel: models.creator.ICreatorStatic,
                  private UserModel: models.user.IUserStatic) {
 
     }
@@ -75,7 +77,10 @@ export class UserService {
                         });
                         break;
                     case 'creator':
-                        // code...
+                        this.CreatorModel.$find(this.user.role.id).$then((creator) => {
+                            this.user.roleInfo = creator;
+                            return this.user;
+                        });
                         break;
                     default:
                         // code...

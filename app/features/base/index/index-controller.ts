@@ -1,7 +1,6 @@
 /// <reference path='../../../app.d.ts' />
 
 import config = require('config');
-import creators = require('../../../static/data/creators');
 import models = require('../../../components/models');
 import videos = require('../../../static/data/videos');
 
@@ -18,16 +17,21 @@ export var controllerName = config.appName + '.base.index.controller';
  */
 export class IndexController {
     static $inject = [ '$scope',
-                       models.actor.serviceName ];
+                       models.actor.serviceName,
+                       models.creator.serviceName ];
     actors: models.actor.IActorCollection;
-    creators = creators;
+    creators: models.creator.ICreatorCollection;
     videos = videos;
 
     constructor(private $scope: IScope,
-                private ActorModel: models.actor.IActorStatic) {
+                private ActorModel: models.actor.IActorStatic,
+                private CreatorModel: models.creator.ICreatorStatic) {
         $scope.index = this;
         this.ActorModel.$collection().$fetch().$then((actors) => {
             this.actors = <models.actor.IActorCollection>actors;
+        });
+        this.CreatorModel.$collection().$fetch().$then((creators) => {
+            this.creators = <models.creator.ICreatorCollection>creators;
         });
     }
 }

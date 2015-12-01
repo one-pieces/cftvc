@@ -20,10 +20,11 @@ export class SignupController {
                        '$state',
                        'Upload',
                        models.actor.serviceName,
+                       models.creator.serviceName,
                        models.user.serviceName,
                        userService.serviceName ];
     actor: models.actor.IActor;
-    creator: any;
+    creator: models.creator.ICreator;
     user: models.user.IUser;
     password2 = '';
     type: string;
@@ -32,6 +33,7 @@ export class SignupController {
                 private $state: ng.ui.IStateService,
                 private $upload: ng.angularFileUpload.IUploadService,
                 private ActorModel: models.actor.IActorStatic,
+                private CreatorModel: models.creator.ICreatorStatic,
                 private UserModel: models.user.IUserStatic,
                 private userService: userService.Service) {
         $scope.signup = this;
@@ -73,6 +75,8 @@ export class SignupController {
                     shoesSize: '',
                     hairColor: '',
                     eyeColor: '',
+                    givenName: '',
+                    familyName: '',
                     mobile: '',
                     location: '',
                     gender: '',
@@ -83,7 +87,18 @@ export class SignupController {
                 });
                 break;
             case 'creator':
-                // TODO
+                this.creator = this.CreatorModel.$build({
+                    nickname: '',
+                    intro: '',
+                    givenName: '',
+                    familyName: '',
+                    mobile: '',
+                    location: '',
+                    gender: '',
+                    role: 'creator',
+                    type: this.type,
+                    avatarUrl: ''
+                });
                 break;
             default:
                 // TODO
@@ -130,9 +145,15 @@ export class SignupController {
                     });
                     break;
                 case 'creator':
-                    // this.creator.$save().$then((creator) => {
-                    //     this.$state.go('base.login');
-                    // });
+                    this.creator.avatarUrl = response.data;
+                    this.creator.$save().$then((creator) => {
+                        this.user.role.id = creator._id;
+                        this.userService.signup(this.user).then((user) => {
+                            this.$state.go('base.login');
+                        }, (reason: any) => {
+                            console.log(reason);
+                        });
+                    });
                     break;
                 default:
                     // code...

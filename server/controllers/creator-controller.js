@@ -1,42 +1,42 @@
-var Actor = require('../models/actor-model');
+var Creator = require('../models/creator-model');
 
 exports.create = function(req, res, next) {
-    var _actor = new Actor(req.body);
+    var _creator = new Creator(req.body);
 
-    _actor.save(function(err, actor) {
+    _creator.save(function(err, creator) {
         if (err) {
             return next(err);
         } else {
-            res.json(actor);
+            res.json(creator);
         }
     });
 }
 
 exports.findById = function(req, res, next) {
-    var actorId = req.params.id;
+    var creatorId = req.params.id;
 
-    Actor.findById(actorId, function(err, actor) {
+    Creator.findById(creatorId, function(err, creator) {
         if (err) {
             res.status(400);
             res.json("Error occured: " + err);
         } else {
-            if (actor) {
-                var _actor = actor;
-                res.json(_actor);
+            if (creator) {
+                var _creator = creator;
+                res.json(_creator);
             } else {
                 res.status(404);
-                res.json("Can't find the actor.");
+                res.json("Can't find the creator.");
             }
         }
     });
 }
 
 exports.findAll = function(req, res, next) {
-    Actor.fetch(function(err, actors) {
+    Creator.fetch(function(err, creators) {
         if (err) {
             return next(err);
         } else {
-            res.json(actors);
+            res.json(creators);
         }
     });
 }

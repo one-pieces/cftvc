@@ -2,7 +2,6 @@
 
 import config = require('config');
 import models = require('../../components/models');
-import creators = require('../../static/data/creators');
 
 'use strict';
 
@@ -22,12 +21,10 @@ export var controllerName = config.appName + '.creatorProfile.controller';
 export class CreatorProfileController {
     static $inject = [ '$scope',
                        '$state',
-                       models.user.serviceName ];
-    
-    creators = creators;
-    creator: any;
+                       models.creator.serviceName ];
+
     creatorId: string;
-    currentUser: models.user.IUser;
+    creator: models.creator.ICreator;
     navItems = [ 
         {
             label: '作品',
@@ -48,10 +45,12 @@ export class CreatorProfileController {
 
     constructor(private $scope: IScope,
                 private $state: ng.ui.IStateService,
-                private UserModel: models.user.IUserStatic) {
+                private CreatorModel: models.creator.ICreatorStatic) {
         $scope.creatorProfile = this;
         this.creatorId = (<IStateParams>$state.params).id;
-        this.creator = this.creators[parseInt(this.creatorId, 10)];
+        this.CreatorModel.$find(this.creatorId).$then((creator: models.creator.ICreator) => {
+            this.creator = creator;
+        });
     }
 }
 
