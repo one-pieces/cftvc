@@ -18,13 +18,12 @@ export interface ILearnRange {
 
 export interface ILearnActor {
     _id?: string;
-    nickname: string;
     height: string;
     weight: string;
     chest: string;
     waist: string;
     hip: string;
-    shoseSize: string;
+    shoesSize: string;
     hairColor: string;
     eyeColor: string;
     // experience: string;
@@ -35,6 +34,17 @@ export interface ILearnActor {
         createAt: Date;
         updateAt: Date;
     };
+    givenName: string;
+    familyName: string;
+    mobile: string;
+    nickname: string;
+    location: string;
+    gender: string;
+    role: string;
+    type: string;
+    label: string;
+    avatarUrl: string;
+    viewUrl: string;
 }
 
 /**

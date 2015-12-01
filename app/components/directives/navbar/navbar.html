@@ -33,7 +33,8 @@
                     <a href="#" ui-sref="base.signup.userInfo">注册</a>
                 </li>
                 <li ng-show="navbar.user">
-                    <span>{{navbar.user.nickname}}, 欢迎回来！</span>
+                    <op-avatar data="navbar.user.roleInfo" radius="small"></op-avatar>
+                    <span>{{navbar.user.roleInfo.nickname}}</span>
                 </li>
                 <li ng-show="navbar.user">
                     <a href="#" ng-click="navbar.signout()">退出</a>

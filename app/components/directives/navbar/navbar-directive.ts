@@ -3,8 +3,9 @@
 /// <amd-dependency path='text!components/directives/navbar/navbar.html' />
 import angular = require('angular');
 import config = require('config');
-import userService = require('../../services/user/user-service');
 import models = require('../../models');
+import avatarDirective = require('../avatar/avatar-directive');
+import userService = require('../../services/user/user-service');
 
 'use strict';
 
@@ -82,7 +83,7 @@ export class NavbarDirective implements ng.IDirective {
     }
 }
 
-angular.module(moduleName, [userService.moduleName])
+angular.module(moduleName, [userService.moduleName, avatarDirective.moduleName])
     .directive(directiveName, ['$injector', ($injector: ng.auto.IInjectorService) => {
         return $injector.instantiate(NavbarDirective);
     }]);

@@ -9,3 +9,9 @@ npm-debug.log
 .idea
 .tscache
 tscommand*
+
+app/static/images/user/avatars/*
+!/app/static/images/user/avatars/default
+
+app/static/images/user/views/*
+!/app/static/images/user/views/default

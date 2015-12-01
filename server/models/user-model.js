@@ -6,15 +6,10 @@ var JWT_SECRET = 'op';
 var Schema = mongoose.Schema;
 
 var UserSchema = new Schema({
-    nickname: String,
-    givenName: String,
-    familyName: String,
-    email: String,
-    mobile: String,
-    brithday: String,
-    location: String,
-    gender: String,
-    role: String,
+    role: {
+        name: String,
+        id: String
+    },
     username: {
         unique: true,
         require: true,

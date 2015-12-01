@@ -2,13 +2,12 @@ var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
 var ActorSchema = new Schema({
-    nickname: String,
     height: String,
     weight: String,
     chest: String,
     waist: String,
     hip: String,
-    shoseSize: String,
+    shoesSize: String,
     hairColor: String,
     eyeColor: String,
     // experience: String,
@@ -28,7 +27,20 @@ var ActorSchema = new Schema({
             type: Date,
             default: Date.now()
         }
-    }
+    },
+    nickname: String,
+    givenName: String,
+    familyName: String,
+    // email: String,
+    mobile: String,
+    // brithday: String,
+    location: String,
+    gender: String,
+    role: String,
+    type: String,
+    label: String,
+    avatarUrl: String,
+    viewUrl: String
 });
 
 ActorSchema.pre('save', function(next) {

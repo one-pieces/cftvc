@@ -14,15 +14,21 @@ export interface ILearnUser {
     _id?: string;
     password?: string;
     username: string;
-    givenName: string;
-    familyName: string;
-    mobile: string;
-    email: string;
-    brithday: string;
-    nickname: string;
-    location: string;
-    gender: string;
-    role: string;
+    role: {
+        name: string,
+        id: string
+    };
+    roleInfo?: any;
+    // givenName: string;
+    // familyName: string;
+    // mobile: string;
+    // email: string;
+    // brithday: string;
+    // nickname: string;
+    // location: string;
+    // gender: string;
+    // role: string;
+    // avatarUrl: string;
     meta: {
         createAt: Date;
         updateAt: Date;

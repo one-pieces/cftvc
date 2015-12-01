@@ -2,7 +2,7 @@
     <div class="row header">
         <ul class="list-inline">
             <li>
-                <h1 class="name">{{actorProfile.actor.name}}
+                <h1 class="name">{{actorProfile.actor.nickname}}
                 </h1>
             </li>
             <li>
@@ -35,50 +35,42 @@
             </ul>
             <div class="detail-item">
                 <span>身高 /</span>
-                <span class="value">{{actorProfile.actor.body.height}}</span>
+                <span class="value">{{actorProfile.actor.height}}</span>
             </div>
             <div class="detail-item">
                 <span>体重 / </span>
-                <span class="value">{{actorProfile.actor.body.weight}}</span>
+                <span class="value">{{actorProfile.actor.weight}}</span>
             </div>
             <div class="detail-item">
                 <span>胸围 / </span>
-                <span class="value">{{actorProfile.actor.body.chest}}</span>
+                <span class="value">{{actorProfile.actor.chest}}</span>
             </div>
             <div class="detail-item">
                 <span>腰围 / </span>
-                <span class="value">{{actorProfile.actor.body.waist}}</span>
+                <span class="value">{{actorProfile.actor.waist}}</span>
             </div>
             <div class="detail-item">
                 <span>臀围 / </span>
-                <span class="value">{{actorProfile.actor.body.hip}}</span>
+                <span class="value">{{actorProfile.actor.hip}}</span>
             </div>
             <div class="detail-item">
                 <span>鞋码 / </span>
-                <span class="value">{{actorProfile.actor.body.shoesSize}}</span>
+                <span class="value">{{actorProfile.actor.shoesSize}}</span>
             </div>
             <div class="detail-item">
                 <span>头发颜色 / </span>
-                <span class="value">{{actorProfile.actor.body.hairColor}}</span>
+                <span class="value">{{actorProfile.actor.hairColor}}</span>
             </div>
             <div class="detail-item">
                 <span>眼睛颜色 / </span>
-                <span class="value">{{actorProfile.actor.body.eyeColor}}</span>
+                <span class="value">{{actorProfile.actor.eyeColor}}</span>
             </div>
         </div>
         <div class="col-sm-6 nopadding photos">
-            <img src="/static/images/{{actorProfile.actor.imgUrl}}" width="100%" height="100%">
+            <img src="/static/images/user/views/{{actorProfile.actor.viewUrl}}" width="100%" height="100%">
         </div>
     </div>
-    <div class="row work-intro">
-        <!-- <div class="row">
-            <div class="col-xs-2">
-                工作经验 | 
-            </div>
-            <div class="col-xs-10">
-                工作经验 | 
-            </div>
-        </div> -->
+    <!-- <div class="row work-intro">
         <ul class="list-inline">
             <li>
                 <span class="labal">工作经验  
@@ -97,5 +89,5 @@
                 <span class="style" ng-repeat="style in actorProfile.actor.work.styles">{{style}}</span>
             </li>
         </ul>
-    </div>
+    </div> -->
 </div>

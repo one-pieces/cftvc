@@ -6,10 +6,10 @@ var config = require('../config/config.js');
 var index = require('./controllers/index.js');
 process.env.PORT = config.server.port || 5000;
 
-var serveLib = require('./server_lib.js');
+var serverLib = require('./server_lib.js');
 
-var db = serveLib.createDb();
-var app = serveLib.createApp();
+var db = serverLib.createDbAndLoadData();
+var app = serverLib.createApp();
 var server = require('http').createServer(app);
 
 app.set('port', process.env.PORT);

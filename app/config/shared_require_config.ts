@@ -16,6 +16,8 @@
             jquery: 'vendor/jquery/jquery',
             json: 'vendor/requirejs-plugins/json',
             md5: 'vendor/angular-md5/angular-md5',
+            'ng-file-upload': 'vendor/ng-file-upload/ng-file-upload',
+            ngImgCrop: 'vendor/ngImgCrop/ng-img-crop',
             require_config: 'config/require_config',
             restmod: 'vendor/angular-restmod/angular-restmod-bundle.min',
             shared_require_config: 'config/shared_require_config',
@@ -38,6 +40,12 @@
                 deps: ['jquery']
             },
             md5: {
+                deps: ['angular']
+            },
+            'ng-file-upload': {
+                deps: ['angular']
+            },
+            ngImgCrop: {
                 deps: ['angular']
             },
             restmod: {

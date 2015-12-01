@@ -5,12 +5,17 @@ var compress = require('compression');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var path = require('path');
+var glob = require('glob');
+var fs = require('fs');
 var ejs = require('ejs');
 var session = require('express-session');
 var mongoStore = require('connect-mongo')(session);
+var multiparty = require('connect-multiparty');
 
 var config = require('../config/config.js');
 var serverMode = require('./server_mode.js');
+
+var db;
 
 exports.createApp = function(callback) {
     var app = express();
@@ -27,6 +32,7 @@ exports.createApp = function(callback) {
         extended: true
     }));
     app.use(bodyParser.json());
+    app.use(multiparty());
     app.use(cookieParser());
     app.use(session({
         saveUninitialized: true,
@@ -53,8 +59,38 @@ exports.createApp = function(callback) {
     return app;
 };
 
-exports.createDb = function(callback) {
-    console.log(config.db);
-    var db = mongoose.connect(config.db);
+// exports.createDb = function(callback) {
+//     console.log(config.db);
+//     db = mongoose.connect(config.db);
+//     return db;
+// };
+
+exports.createDbAndLoadData = function() {
+    if (db == null) {
+        db = mongoose.connect(config.db);
+
+        var dataFiles = glob.sync(__dirname + '/data/default/**/*.json');
+        dataFiles.forEach(function(dataFile) {
+            fs.readFile(dataFile, function(err, fileData) {
+                var dataJson = JSON.parse(fileData);
+                var Model = require('./models/' + dataJson.model);
+                Model.remove({}, function(err) {
+                    dataJson.data.forEach(function(data) {
+                        var dataModel = new Model(data);
+                        dataModel.save(function(err, data) {
+                            if (err) {
+                                console.log(err);
+                            }
+                            // if (err) {
+                            //     console.log(err);
+                            // } else {
+                            //     console.log(data.role + '_' + data._id + 'has been loaded successfully.');
+                            // }
+                        });
+                    });
+                });
+            });
+        });
+    }
     return db;
 };

@@ -1,5 +1,43 @@
 <form class="form-horizontal" ng-submit="signup.submit()">
     <div class="form-group">
+        <label for="familyName" class="col-sm-3 control-label">姓氏</label>
+        <div class="col-xs-4">
+            <input class="form-control" id="familyName" name="familyName" placeholder="姓氏" ng-model="signup.actor.familyName">
+        </div>
+        <div class="col-xs-5">
+            <input class="form-control" name="givenName" placeholder="名字" ng-model="signup.actor.givenName">
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="nickname" class="col-sm-3 control-label">昵称</label>
+        <div class="col-sm-9">
+            <input class="form-control" id="nickname" name="nickname" placeholder="" ng-model="signup.actor.nickname">
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="gender" class="col-sm-3 control-label">性别</label>
+        <div class="col-sm-9">
+            <label class="radio-inline">
+                <input id="gender" type="radio" name="gender" value="male" ng-model="signup.actor.gender"> 男
+            </label>
+            <label class="radio-inline">
+                <input type="radio" name="gender" value="female" ng-model="signup.actor.gender"> 女
+            </label>
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="mobile" class="col-sm-3 control-label">手机号码</label>
+        <div class="col-sm-9">
+            <input class="form-control" id="mobile" name="mobile" placeholder="" ng-model="signup.actor.mobile">
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="location" class="col-sm-3 control-label">工作地</label>
+        <div class="col-sm-9">
+            <input class="form-control" id="location" name="location" placeholder="" ng-model="signup.actor.location">
+        </div>
+    </div>
+    <div class="form-group">
         <label for="height" class="col-sm-3 control-label">身高</label>
         <div class="col-sm-9">
             <input class="form-control" id="height" name="height" placeholder="" ng-model="signup.actor.height">
@@ -26,7 +64,7 @@
     <div class="form-group">
         <label for="shoseSize" class="col-sm-3 control-label">鞋码</label>
         <div class="col-sm-9">
-            <input class="form-control" id="shoseSize" name="shoseSize" placeholder="" ng-model="signup.actor.shoseSize">
+            <input class="form-control" id="shoseSize" name="shoseSize" placeholder="" ng-model="signup.actor.shoesSize">
         </div>
     </div>
     <div class="form-group">
@@ -43,17 +81,7 @@
     </div>
     <div class="form-group">
         <div class="col-sm-offset-3 col-sm-9">
-            <div class="checkbox">
-                <label>
-                    <input type="checkbox"> 已阅读并同意
-                </label>
-                <a href="#" class=".clause">《cftvc服务条款》</a>
-            </div>
-        </div>
-    </div>
-    <div class="form-group">
-        <div class="col-sm-offset-3 col-sm-9">
-            <button class="btn-lg btn-default" type="submit">确定</button>
+            <button class="btn-lg btn-default" ui-sref="base.signup.uploadAvatar">下一步</button>
         </div>
     </div>
 </form>

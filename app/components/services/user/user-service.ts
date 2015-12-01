@@ -16,6 +16,7 @@ export class UserService {
     static $inject = [ '$q',
                        'md5',
                        '$rootScope',
+                       models.actor.serviceName,
                        models.user.serviceName];
 
     private user: models.user.IUser;
@@ -23,6 +24,7 @@ export class UserService {
     constructor( private $q: ng.IQService,
                  private md5: any,
                  private $rootScope: ng.IRootScopeService,
+                 private ActorModel: models.actor.IActorStatic,
                  private UserModel: models.user.IUserStatic) {
 
     }
@@ -65,7 +67,20 @@ export class UserService {
         if (!this.user && token) {
             return this.UserModel.$find('me').$then((user) => {
                 this.user = user;
-                return this.user;
+                switch (this.user.role.name) {
+                    case 'actor':
+                        this.ActorModel.$find(this.user.role.id).$then((actor) => {
+                            this.user.roleInfo = actor;
+                            return this.user;
+                        });
+                        break;
+                    case 'creator':
+                        // code...
+                        break;
+                    default:
+                        // code...
+                        break;
+                }
             }).$asPromise();
         } else {
             return this.$q.when(this.user);
@@ -75,6 +90,6 @@ export class UserService {
 
 export class Service extends UserService {}
 
-angular.module(moduleName, ['ngMd5'])
+angular.module(moduleName, ['ngFileUpload','ngMd5'])
     .service(serviceName, UserService);
 

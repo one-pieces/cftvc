@@ -6,38 +6,6 @@
         </div>
     </div>
     <div class="form-group">
-        <label for="familyName" class="col-sm-3 control-label">姓氏</label>
-        <div class="col-sm-4">
-            <input class="form-control" id="familyName" name="familyName" placeholder="姓氏" ng-model="signup.user.familyName">
-        </div>
-        <div class="col-sm-5">
-            <input class="form-control" name="givenName" placeholder="名字" ng-model="signup.user.givenName">
-        </div>
-    </div>
-    <div class="form-group">
-        <label for="nickname" class="col-sm-3 control-label">昵称</label>
-        <div class="col-sm-9">
-            <input class="form-control" id="nickname" name="nickname" placeholder="" ng-model="signup.user.nickname">
-        </div>
-    </div>
-    <div class="form-group">
-        <label for="gender" class="col-sm-3 control-label">性别</label>
-        <div class="col-sm-9">
-            <label class="radio-inline">
-                <input id="gender" type="radio" name="gender" value="male" ng-model="signup.user.gender"> 男
-            </label>
-            <label class="radio-inline">
-                <input type="radio" name="gender" value="female" ng-model="signup.user.gender"> 女
-            </label>
-        </div>
-    </div>
-    <div class="form-group">
-        <label for="mobile" class="col-sm-3 control-label">手机号码</label>
-        <div class="col-sm-9">
-            <input class="form-control" id="mobile" name="mobile" placeholder="" ng-model="signup.user.mobile">
-        </div>
-    </div>
-    <div class="form-group">
         <label for="password" class="col-sm-3 control-label">密码</label>
         <div class="col-sm-9">
             <input type="password" class="form-control" id="password" name="password" placeholder="" ng-model="signup.user.password">
@@ -53,16 +21,29 @@
         <label for="role" class="col-sm-3 control-label">你是</label>
         <div class="col-sm-9">
             <label class="radio-inline">
-                <input id="role" type="radio" name="role" value="actor" ng-model="signup.user.role"> 演员，模特
+                <input id="role" type="radio" name="role" value="演员" ng-model="signup.type"> 演员
             </label>
             <label class="radio-inline">
-                <input type="radio" name="role" value="creator" ng-model="signup.user.role"> 导演
+                <input id="role" type="radio" name="role" value="模特" ng-model="signup.type"> 模特
+            </label>
+            <label class="radio-inline">
+                <input type="radio" name="role" value="导演" ng-model="signup.type"> 导演
             </label>
         </div>
     </div>
     <div class="form-group">
         <div class="col-sm-offset-3 col-sm-9">
-            <button class="btn-lg btn-default" ui-sref="base.signup.rolerInfo({ role: signup.user.role })" ng-click="signup.continue()">下一步</button>
+            <div class="checkbox">
+                <label>
+                    <input type="checkbox"> 已阅读并同意
+                </label>
+                <a href="#" class=".clause">《cftvc服务条款》</a>
+            </div>
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="col-sm-offset-3 col-sm-9">
+            <button class="btn-lg btn-default" ui-sref="base.signup.rolerInfo({ role: signup.user.role.name })" ng-click="signup.continue()">下一步</button>
         </div>
     </div>
 </form>

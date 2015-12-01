@@ -1,5 +1,8 @@
 <div class="avatar">
-    <a href="#" ui-sref="creatorProfile({id: data.id})">
-        <img src="/static/images/{{data.imgUrl}}" title="{{data.name}}" alt="{{data.name}}" width="{{avatar.radius}}" height="{{avatar.radius}}">
+    <a href="#" ng-if="data.role === 'creator'" ui-sref="creatorProfile({id: data._id})">
+        <img src="/static/images/user/avatars/{{data.avatarUrl}}" title="{{data.nickname}}" alt="{{data.nickname}}" width="{{avatar.radius}}" height="{{avatar.radius}}">
+    </a>
+    <a href="#" ng-if="data.role === 'actor'" ui-sref="actorProfile({id: data._id})">
+        <img src="/static/images/user/avatars/{{data.avatarUrl}}" title="{{data.nickname}}" alt="{{data.nickname}}" width="{{avatar.radius}}" height="{{avatar.radius}}">
     </a>
 </div>
