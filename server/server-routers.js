@@ -2,6 +2,7 @@ var authorization = require('./middleware/authorization');
 var actorController = require('./controllers/actor-controller');
 var creatorController = require('./controllers/creator-controller');
 var userController = require('./controllers/user-controller');
+var workController = require('./controllers/work-controller');
 
 module.exports = function(app) {
     app.post('/api/v1/user', userController.signup);
@@ -18,4 +19,8 @@ module.exports = function(app) {
     app.post('/api/v1/creator', creatorController.create);
     app.get('/api/v1/creator', creatorController.findAll);
     app.get('/api/v1/creator/:id', creatorController.findById);
+
+    app.post('/api/v1/work', workController.create);
+    app.get('/api/v1/work', workController.findAll);
+    app.get('/api/v1/work/:id', workController.findById);
 };

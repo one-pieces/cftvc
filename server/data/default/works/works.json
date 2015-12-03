@@ -1,0 +1,81 @@
+{
+    "model": "work-model",
+    "data": [{
+        "_id": "002000000000000000000001",
+        "title": "MINI在乌镇干了一件“颜值爆表”的事",
+        "creator": "001000000000000000000001",
+        "intro": "今天，我们为大家打来回家系列的最后一发——《迟来的新衣》对于一个孩子来说，新年最开心的事情莫过于有一件新衣穿在身上，在广东肇庆打工的夫妇们终于要回到贵州老家了，家中的孩子现在有多高了呢？在外打工的母亲已经拿捏不准新衣的尺码。万水千山，什么样的景致在这一刻都不及家中的笑脸，那件新衣终究是短了些，但对未来的希望一点也不曾减短，我们拼搏，我们隐忍，我们满怀希望，我想这大概是家的力量吧，就像歌里唱的：“家里的，让他不怕往前冲。”这是我们的心最终落脚的地方，这一生，我们都走在回家的路上。",
+        "comments": [""],
+        "likes": [""],
+        "pv": "1024",
+        "type": "video",
+        "category": "网络广告",
+        "poster": "default/w11.jpg",
+        "videoUrl": "http://player.youku.com/player.php/sid/XMTMwODUxNzAwMA==/partnerid/62cdd377ba258711/v.swf"
+    },
+    {
+        "_id": "002000000000000000000002",
+        "title": "《风从海上来》温岭城市宣传片",
+        "creator": "001000000000000000000002",
+        "intro": "不知道该说啥",
+        "comments": [""],
+        "likes": [""],
+        "pv": "1024",
+        "type": "video",
+        "category": "网络广告",
+        "poster": "default/w12.jpg",
+        "videoUrl": "http://player.youku.com/player.php/sid/XMTMwODUxNzAwMA==/partnerid/62cdd377ba258711/v.swf"
+    },
+    {
+        "_id": "002000000000000000000003",
+        "title": "做一把冷兵器之王的弓箭，寻找远去的江湖",
+        "creator": "001000000000000000000003",
+        "intro": "不知道该说啥",
+        "comments": [""],
+        "likes": [""],
+        "pv": "1024",
+        "type": "video",
+        "category": "网络广告",
+        "poster": "default/w16.jpg",
+        "videoUrl": "http://player.youku.com/player.php/sid/XMTMwODUxNzAwMA==/partnerid/62cdd377ba258711/v.swf"
+    },
+    {
+        "_id": "002000000000000000000004",
+        "title": "作曲：《陌陌》-陌生并不存在 - 广告篇",
+        "creator": "001000000000000000000004",
+        "intro": "不知道该说啥",
+        "comments": [""],
+        "likes": [""],
+        "pv": "1024",
+        "type": "video",
+        "category": "网络广告",
+        "poster": "default/w14.jpg",
+        "videoUrl": "http://player.youku.com/player.php/sid/XMTMwODUxNzAwMA==/partnerid/62cdd377ba258711/v.swf"
+    },
+    {
+        "_id": "002000000000000000000005",
+        "title": "【造物集】海外篇——红酒玫瑰面膜",
+        "creator": "001000000000000000000005",
+        "intro": "不知道该说啥",
+        "comments": [""],
+        "likes": [""],
+        "pv": "1024",
+        "type": "video",
+        "category": "网络广告",
+        "poster": "default/w13.jpg",
+        "videoUrl": "http://player.youku.com/player.php/sid/XMTMwODUxNzAwMA==/partnerid/62cdd377ba258711/v.swf"
+    },
+    {
+        "_id": "002000000000000000000006",
+        "title": "江户前 金枪鱼 寿司",
+        "creator": "001000000000000000000006",
+        "intro": "不知道该说啥",
+        "comments": [""],
+        "likes": [""],
+        "pv": "1024",
+        "type": "video",
+        "category": "网络广告",
+        "poster": "default/w15.jpg",
+        "videoUrl": "http://player.youku.com/player.php/sid/XMTMwODUxNzAwMA==/partnerid/62cdd377ba258711/v.swf"
+    }]
+}

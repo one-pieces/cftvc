@@ -12,6 +12,8 @@ How to Set Up:
 7. grunt develop
 8. 浏览器输入localhost:5000/cftvc
 
+All default users' password are "changeme".
+
 This project has used MEAN(Mongo, Express, AngularJS, NodeJS) framework. The following is the file structure:
 
 1. app -- The front end code folders

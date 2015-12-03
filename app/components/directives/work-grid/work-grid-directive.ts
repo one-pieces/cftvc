@@ -4,6 +4,7 @@
 import $ = require('jquery');
 import angular = require('angular');
 import config = require('config');
+import models = require('../../models');
 
 'use strict';
 
@@ -13,7 +14,7 @@ export var templateText = window.require('text!components/directives/work-grid/w
 
 export interface IScope extends ng.IScope {
     workGrid: WorkGrid;
-    data: any;
+    data: models.work.IWork;
     canBeHovered: boolean;
 }
 
@@ -21,9 +22,12 @@ export interface IScope extends ng.IScope {
  * WorkGrid class for the directive
  */
 export class WorkGrid {
-    static $inject = ['scope'];
+    static $inject = [ 'scope',
+                       models.creator.serviceName ];
 
-    constructor(private scope: IScope) {
+    constructor(private scope: IScope,
+                private CreatorModel: models.creator.ICreatorStatic) {
+
     }
 }
 

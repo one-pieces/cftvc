@@ -3,3 +3,4 @@
 export var ACTOR = 'ActorModel';
 export var CREATOR = 'CreatorModel';
 export var USER = 'UserModel';
+export var WORK = 'WorkModel';
