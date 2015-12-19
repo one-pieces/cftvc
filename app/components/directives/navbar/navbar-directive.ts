@@ -24,12 +24,14 @@ export interface IScope extends ng.IScope {
  * Navbar class for the directive
  */
 export class Navbar {
-    static $inject = [ 'scope', 
+    static $inject = [ 'scope',
+                       '$state',
                        userService.serviceName,
                        models.user.serviceName ];
 
     user: models.user.IUser;
     constructor(private scope: IScope,
+                private $state: ng.ui.IStateService,
                 private userService: userService.Service,
                 private UserModel: models.user.IUserStatic) {
         this.getUser();
@@ -38,8 +40,12 @@ export class Navbar {
         });
     }
 
-    signout() {
-        this.userService.signout();
+    logout() {
+        this.userService.logout().then((result) => {
+            if (result) {
+                this.$state.go('base.index');
+            }
+        });
     }
 
     getUser() {

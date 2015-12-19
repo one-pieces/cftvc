@@ -32,12 +32,12 @@ var WorkSchema = new Schema({
 });
 
 WorkSchema.pre('save', function(next) {
-    var Work = this;
-    if (this.isNew) {
-        this.meta.createAt = this.meta.updateAt = Date.now();
-    } else {
-        this.meta.updateAt = Date.now();
-    }
+    this.meta.createAt = this.meta.updateAt = Date.now();
+    next();
+});
+
+WorkSchema.pre('findOneAndUpdate', function(next) {
+    this.update({}, { $set: { 'meta.updateAt': Date.now() }});
     next();
 });
 

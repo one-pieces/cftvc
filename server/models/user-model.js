@@ -1,8 +1,6 @@
 var mongoose = require('mongoose');
 var bcrypt = require('bcrypt');
-var jwt = require('jsonwebtoken');
 var SALT_WORK_FACTOR = 0;
-var JWT_SECRET = 'op';
 var Schema = mongoose.Schema;
 
 var UserSchema = new Schema({
@@ -34,17 +32,8 @@ var UserSchema = new Schema({
 
 UserSchema.pre('save', function(next) {
     var user = this;
-    if (this.isNew) {
-        this.meta.createAt = this.meta.updateAt = Date.now();
-    } else {
-        this.meta.updateAt = Date.now();
-    }
+    this.meta.createAt = this.meta.updateAt = Date.now();
 
-    user.token = jwt.sign(user, JWT_SECRET);
-
-    if (!user.isModified('password')) {
-        return next();
-    }
     bcrypt.genSalt(SALT_WORK_FACTOR, function(err, salt) {
         if (err) {
             return next(err);
@@ -57,6 +46,27 @@ UserSchema.pre('save', function(next) {
             next();
         });
     });
+});
+
+UserSchema.pre('findOneAndUpdate', function(next) {
+    this.update({}, { $set: { 'meta.updateAt': Date.now() }});
+    var set = this._update.$set;
+    if (Object.keys(set).indexOf('password') > -1) {
+        bcrypt.genSalt(SALT_WORK_FACTOR, function(err, salt) {
+            if (err) {
+                return next(err);
+            }
+            bcrypt.hash(set['password'], salt, function(err, hash) {
+                if (err) {
+                    return next(err);
+                }
+                set['password'] = hash;
+                next();
+            });
+        });
+    } else {
+        next();
+    }
 });
 
 UserSchema.methods = {

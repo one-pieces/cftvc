@@ -20,7 +20,7 @@ export class UserService {
                        models.creator.serviceName,
                        models.user.serviceName];
 
-    private user: models.user.IUser;
+    // private user: models.user.IUser;
     
     constructor( private $q: ng.IQService,
                  private md5: any,
@@ -31,12 +31,16 @@ export class UserService {
 
     }
 
+    md5Hash(password: string): string {
+        return this.md5.createHash(password);
+    }
+
     /**
      *  
      */
     login(userInfo: any): ng.IPromise<string> {
         var deferred = this.$q.defer();
-        userInfo.password = this.md5.createHash(userInfo.password || '');
+        userInfo.password = this.md5Hash(userInfo.password || '');
         this.UserModel.login(userInfo).then((token) => {
             (<any>window.sessionStorage).token = token;
             this.$rootScope.$broadcast('sign-action');
@@ -49,7 +53,7 @@ export class UserService {
 
     signup(userInfo: models.user.IUser): ng.IPromise<models.user.IUser> {
         var deferred = this.$q.defer();
-        userInfo.password = this.md5.createHash(userInfo.password || '');
+        userInfo.password = this.md5Hash(userInfo.password || '');
         userInfo.$save().$then((user: models.user.IUser) => {
             deferred.resolve(user);
         }, (reason: any) => {
@@ -58,43 +62,61 @@ export class UserService {
         return deferred.promise;
     }
 
-    signout() {
-        this.user = null;
-        delete (<any>window.sessionStorage).token;
-        this.$rootScope.$broadcast('sign-action');
+    logout(): ng.IPromise<boolean> {
+        var deferred = this.$q.defer();
+        this.UserModel.logout().then((result) => {
+            if (result) {
+                delete (<any>window.sessionStorage).token;
+                this.$rootScope.$broadcast('sign-action');
+            }
+            deferred.resolve(result);
+        });
+        return deferred.promise;
     }
 
-    me(): ng.IPromise<models.user.IUser> {
+    me(notPopulateRoleInfo?: boolean): ng.IPromise<models.user.IUser> {
         var token = (<any>window.sessionStorage).token;
-        if (!this.user && token) {
+        // var currentUser = (<any>window.localStorage).user && JSON.parse((<any>window.localStorage).user);
+        // if (!currentUser && token) {
+        var currentUser: models.user.IUser;
+        if (token) {
             return this.UserModel.$find('me').$then((user) => {
-                this.user = user;
-                switch (this.user.role.name) {
-                    case 'actor':
-                        this.ActorModel.$find(this.user.role.id).$then((actor) => {
-                            this.user.roleInfo = actor;
-                            return this.user;
-                        });
-                        break;
-                    case 'creator':
-                        this.CreatorModel.$find(this.user.role.id).$then((creator) => {
-                            this.user.roleInfo = creator;
-                            return this.user;
-                        });
-                        break;
-                    default:
-                        // code...
-                        break;
+                currentUser = user;
+                if(!notPopulateRoleInfo) {
+                    switch (currentUser.role.name) {
+                        case 'actor':
+                            return this.ActorModel.$find(currentUser.role.id).$then((actor) => {
+                                currentUser.roleInfo = actor;
+                                // (<any>window.localStorage).user = JSON.stringify(currentUser);
+                                return currentUser;
+                            }).$asPromise();
+                            break;
+                        case 'creator':
+                            return this.CreatorModel.$find(currentUser.role.id).$then((creator) => {
+                                currentUser.roleInfo = creator;
+                                // (<any>window.localStorage).user = JSON.stringify(currentUser);
+                                return currentUser;
+                            }).$asPromise();
+                            break;
+                        default:
+                            // code...
+                            break;
+                    }
+                } else {
+                    return currentUser;
                 }
             }).$asPromise();
         } else {
-            return this.$q.when(this.user);
+            return this.$q.when(currentUser);
         }
+        // } else {
+        //     return this.$q.when(currentUser && this.UserModel.$build(currentUser));
+        // }
     }
 }
 
 export class Service extends UserService {}
 
-angular.module(moduleName, ['ngFileUpload','ngMd5'])
+angular.module(moduleName, ['ngMd5'])
     .service(serviceName, UserService);
 

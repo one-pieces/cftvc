@@ -1,0 +1,30 @@
+<div class="upload-img-page">
+    <form class="form-horizontal" ng-submit="uploadImgPage.submit(croppedDataUrl, picFile2)">
+        <div class="form-group">
+            <label for="avatarUrl" class="col-sm-3 control-label">头像</label>
+            <div class="col-sm-9">
+                <button class="form-control" id="avatarUrl" name="avatarUrl" ngf-select ng-model="picFile" accept="image/*">选择图片</button>
+                <div ngf-drop ng-model="picFile" ngf-pattern="image/*" class="cropArea fl">
+                    <img-crop image="picFile | ngfDataUrl" result-image="croppedDataUrl" ng-init="croppedDataUrl=''"></img-crop>
+                </div>
+                <div class="pre-avatar fr">
+                    <img ng-src="{{croppedDataUrl}}">
+                </div>
+            </div>
+        </div>
+        <div class="form-group" ng-show="user.isActor()">
+            <label for="avatarUrl" class="col-sm-3 control-label">全身照</label>
+            <div class="col-sm-9">
+                <button class="form-control" id="avatarUrl" name="avatarUrl" ngf-select ng-model="picFile2" accept="image/*">选择图片</button>
+                <div class="pre-view">
+                    <img ngf-src="picFile2" width="100%" height="100%">
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-sm-offset-3 col-sm-9">
+                <button class="btn btn-info" type="submit">保存</button>
+            </div>
+        </div>
+    </form>
+</div>

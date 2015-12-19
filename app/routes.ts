@@ -28,15 +28,38 @@ angular.module(moduleName, [
                 template: base.template,
                 controller: base.controllerName
             })
-            .state('actorProfile', {
-                url: config.basePath + '/actor/:id',
-                template: actorProfile.template,
-                controller: actorProfile.controllerName
-            })
-            .state('creatorProfile', {
-                url: config.basePath + '/creator/:id',
-                template: creatorProfile.template,
-                controller: creatorProfile.controllerName
+            .state('show', {
+                url: config.basePath + '/show/:id?role',
+                templateProvider: ['$stateParams', ($stateParams: ng.ui.IStateParamsService) => {
+                    var template: string;
+                    switch ((<any>$stateParams).role) {
+                        case 'actor':
+                            template = actorProfile.template;
+                            break;
+                        case 'creator':
+                            template = creatorProfile.template;
+                            break;
+                        default:
+                            template = actorProfile.template;
+                            break;
+                    }
+                    return template;
+                }],
+                controllerProvider: <any>['$stateParams', ($stateParams: ng.ui.IStateParamsService) => {
+                    var controller: string;
+                    switch ((<any>$stateParams).role) {
+                        case 'actor':
+                            controller = actorProfile.controllerName;
+                            break;
+                        case 'creator':
+                            controller = creatorProfile.controllerName;
+                            break;
+                        default:
+                            controller = actorProfile.controllerName;
+                            break;
+                    }
+                    return controller;
+                }]
             })
             .state('videoDescription', {
                 url: config.basePath + '/video/:id',

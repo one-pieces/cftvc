@@ -1,5 +1,5 @@
 <div class="actor-grid">
-    <a href="#" target="_blank" ui-sref="actorProfile({id: data._id})" title="{{data.nickname}}">
+    <a href="#" target="_blank" ui-sref="show({id: data._id, role: data.role})" title="{{data.nickname}}">
         <img src="/static/images/user/views/{{data.viewUrl}}" width="100%" height="100%" alt="">
         <span class="actor-info">
             {{data.label}} / {{data.nickname}}

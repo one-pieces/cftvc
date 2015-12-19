@@ -7,7 +7,9 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a ng-show="isBrandShown" class="navbar-brand" href="/" ui-sref="base.index">cftvc</a>
+            <a ng-show="isBrandShown" class="navbar-brand" href="/" ui-sref="base.index">
+                <img src="static/images/cftvclogo.png" alt width="81" height="25">
+            </a>
         </div>
 
         <div id="navbar" class="collapse navbar-collapse">
@@ -16,16 +18,7 @@
                     <a href="#" ui-sref="{{item.link}}">{{item.label}}</a>
                 </li>
             </ul>
-            <!-- <form class="navbar-form navbar-left">
-                <div class="input-group">
-                    <input type="text" class="form-control" placeholder="">
-                    <span class="input-group-btn">
-                        <button class="btn btn-default">Go</button>
-                    </span>
-                </div>
-            </form> -->
             <ul ng-show="isLoginShown" class="nav navbar-nav navbar-right">
-                <!-- <li op-confirmation-needed> -->
                 <li ng-show="!navbar.user">
                     <a href="#" ui-sref="base.login">登录</a>
                 </li>
@@ -33,11 +26,10 @@
                     <a href="#" ui-sref="base.signup.userInfo">注册</a>
                 </li>
                 <li ng-show="navbar.user">
-                    <op-avatar data="navbar.user.roleInfo" radius="small"></op-avatar>
-                    <span>{{navbar.user.roleInfo.nickname}}</span>
+                    <op-avatar data="navbar.user.roleInfo" radius="small" is-profile="true"></op-avatar>
                 </li>
                 <li ng-show="navbar.user">
-                    <a href="#" ng-click="navbar.signout()">退出</a>
+                    <a href="#" ng-click="navbar.logout()">退出</a>
                 </li>
             </ul>
         </div>

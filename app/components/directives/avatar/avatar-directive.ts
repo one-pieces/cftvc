@@ -3,6 +3,7 @@
 /// <amd-dependency path='text!components/directives/avatar/avatar.html' />
 import angular = require('angular');
 import config = require('config');
+import popoverDirective = require('../popover/popover-directive');
 
 'use strict';
 
@@ -14,6 +15,7 @@ export interface IScope extends ng.IScope {
     avatar: Avatar;
     data: any;
     radius?: string;
+    isProfile?: boolean;
 }
 
 /**
@@ -73,7 +75,8 @@ export class AvatarDirective implements ng.IDirective {
     // transclude = true;
     scope = {
         data: '=',
-        radius: '@?'
+        radius: '@?',
+        isProfile: '=?'
     };
 
     link = (scope: IScope, element: ng.IAugmentedJQuery, attrs: ng.IAttributes) => {
@@ -82,7 +85,7 @@ export class AvatarDirective implements ng.IDirective {
     }
 }
 
-angular.module(moduleName, [])
+angular.module(moduleName, [popoverDirective.moduleName])
     .directive(directiveName, ['$injector', ($injector: ng.auto.IInjectorService) => {
         return $injector.instantiate(AvatarDirective);
     }]);

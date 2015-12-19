@@ -2,7 +2,6 @@
 
 import config = require('config');
 import models = require('../../../components/models');
-import userService = require('../../../components/services/user/user-service');
 
 'use strict';
 
@@ -17,12 +16,9 @@ export var controllerName = config.appName + '.base.signup.controller';
  */
 export class SignupController {
     static $inject = [ '$scope',
-                       '$state',
-                       'Upload',
                        models.actor.serviceName,
                        models.creator.serviceName,
-                       models.user.serviceName,
-                       userService.serviceName ];
+                       models.user.serviceName ];
     actor: models.actor.IActor;
     creator: models.creator.ICreator;
     user: models.user.IUser;
@@ -30,12 +26,9 @@ export class SignupController {
     type: string;
 
     constructor(private $scope: IScope,
-                private $state: ng.ui.IStateService,
-                private $upload: ng.angularFileUpload.IUploadService,
                 private ActorModel: models.actor.IActorStatic,
                 private CreatorModel: models.creator.ICreatorStatic,
-                private UserModel: models.user.IUserStatic,
-                private userService: userService.Service) {
+                private UserModel: models.user.IUserStatic) {
         $scope.signup = this;
         this.user = this.UserModel.$build({
             username: '',
@@ -104,62 +97,6 @@ export class SignupController {
                 // TODO
                 break;
         }
-    }
-
-    submit(avatarUrl: string, viewFile: File) {
-        var fileName: string;
-        switch (this.user.role.name) {
-            case 'actor':
-                fileName = this.actor.nickname;
-                break;
-            case 'creator':
-                fileName = this.creator.nickname;
-                break;
-            default:
-                fileName = 'nickname';
-                break;
-        }
-        fileName = fileName + '_' + this.user.username;
-        this.$upload.upload({
-            url: config.apiBasePath + '/v1/user/uploadAvatar',
-            method: 'POST',
-            file: (<any>this.$upload).dataUrltoBlob(avatarUrl, fileName)
-        }).success((response: any) => {
-            switch (this.user.role.name) {
-                case 'actor':
-                    this.actor.avatarUrl = response.data;
-                    this.$upload.upload({
-                        url: config.apiBasePath + '/v1/user/uploadView',
-                        method: 'POST',
-                        file: (<any>this.$upload).rename(viewFile, fileName)
-                    }).success((response: any) => {
-                        this.actor.viewUrl = response.data;
-                        this.actor.$save().$then((actor) => {
-                            this.user.role.id = actor._id;
-                            this.userService.signup(this.user).then((user) => {
-                                this.$state.go('base.login');
-                            }, (reason: any) => {
-                                console.log(reason);
-                            });
-                        });
-                    });
-                    break;
-                case 'creator':
-                    this.creator.avatarUrl = response.data;
-                    this.creator.$save().$then((creator) => {
-                        this.user.role.id = creator._id;
-                        this.userService.signup(this.user).then((user) => {
-                            this.$state.go('base.login');
-                        }, (reason: any) => {
-                            console.log(reason);
-                        });
-                    });
-                    break;
-                default:
-                    // code...
-                    break;
-            }
-        });
     }
 }
 

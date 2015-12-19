@@ -8,6 +8,7 @@ import index = require('./index/index');
 import login = require('./login/login');
 import signup = require('./signup/signup');
 import signupRoutes = require('./signup/signup-routes');
+import profile = require('./profile/profile');
 
 'use strict';
 
@@ -18,7 +19,8 @@ angular.module(moduleName, [
     index.moduleName,
     login.moduleName,
     signup.moduleName,
-    signupRoutes.moduleName ])
+    signupRoutes.moduleName,
+    profile.moduleName ])
     .config(['$stateProvider', ($stateProvider: ng.ui.IStateProvider) => {
         $stateProvider
             .state('base.index', {
@@ -41,5 +43,10 @@ angular.module(moduleName, [
                 url: '/signup',
                 template: signup.template,
                 controller: signup.controllerName
+            })
+            .state('base.profile', {
+                url: '/profile',
+                template: profile.template,
+                controller: profile.controllerName
             });
     }]);

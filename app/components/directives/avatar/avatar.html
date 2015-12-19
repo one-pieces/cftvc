@@ -1,8 +1,9 @@
-<div class="avatar">
-    <a href="#" ng-if="data.role === 'creator'" ui-sref="creatorProfile({id: data._id})">
+<div class="avatar" op-popover="{{isProfile}}" popover-container=".popover-container" popover-placement="bottom">
+    <a href="#" ui-sref="show({id: data._id, role: data.role})">
         <img src="/static/images/user/avatars/{{data.avatarUrl}}" title="{{data.nickname}}" alt="{{data.nickname}}" width="{{avatar.radius}}" height="{{avatar.radius}}">
     </a>
-    <a href="#" ng-if="data.role === 'actor'" ui-sref="actorProfile({id: data._id})">
-        <img src="/static/images/user/avatars/{{data.avatarUrl}}" title="{{data.nickname}}" alt="{{data.nickname}}" width="{{avatar.radius}}" height="{{avatar.radius}}">
-    </a>
+    <div class="popover-container hide">
+        <div><a ui-sref="show({id: data._id, role: data.role})">我的秀场</a></div>
+        <div><a ui-sref="base.profile({id: data._id})">个人设置</a></div>
+    </div>
 </div>

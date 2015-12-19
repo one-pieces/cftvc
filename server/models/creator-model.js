@@ -28,12 +28,12 @@ var CreatorSchema = new Schema({
 });
 
 CreatorSchema.pre('save', function(next) {
-    var creator = this;
-    if (this.isNew) {
-        this.meta.createAt = this.meta.updateAt = Date.now();
-    } else {
-        this.meta.updateAt = Date.now();
-    }
+    this.meta.createAt = this.meta.updateAt = Date.now();
+    next();
+});
+
+CreatorSchema.pre('findOneAndUpdate', function(next) {
+    this.update({}, { $set: { 'meta.updateAt': Date.now() }});
     next();
 });
 

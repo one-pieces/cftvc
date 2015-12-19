@@ -1,7 +1,9 @@
 var User = require('../models/user-model');
 var fs = require('fs');
+var jwt = require('jsonwebtoken');
 var path = require('path');
 var mkdirp = require('mkdirp');
+var JWT_SECRET = 'op';
 
 exports.signup = function(req, res, next) {
     var _user = new User(req.body);
@@ -15,6 +17,12 @@ exports.signup = function(req, res, next) {
     });
 };
 
+exports.update = function(req, res, next) {
+    User.findOneAndUpdate({token: req.token}, {$set: req.body}, {new : true}, function(err, user) {
+        res.json(user);
+    });
+}
+
 exports.me = function(req, res, next) {
     User.findOne({token: req.token}, function(err, user) {
         if (err) {
@@ -25,6 +33,29 @@ exports.me = function(req, res, next) {
                 var _user = user;
                 delete _user.password;
                 res.json(_user);
+            } else {
+                res.status(404);
+                res.json("Can't find the user.");
+            }
+        }
+    });
+}
+
+exports.comparePassword = function(req, res, next) {
+    User.findOne({token: req.token}, function(err, user) {
+        if (err) {
+            res.status(400);
+            res.json("Error occured: " + err);
+        } else {
+            if (user) {
+                user.comparePassword(req.body.password, function(err, isMatch) {
+                    if (err) {
+                        res.status(400);
+                        res.json("Error occured: " + err);
+                    } else {
+                        res.json(isMatch);
+                    }
+                });
             } else {
                 res.status(404);
                 res.json("Can't find the user.");
@@ -134,7 +165,10 @@ exports.login = function(req, res, next) {
                         res.json("Error occured: " + err);
                     } else {
                         if (isMatch) {
-                            res.json(user.token);
+                            token = jwt.sign(user, JWT_SECRET);
+                            User.update({_id: user._id}, { $set: {token: token} }, function(err, result) {
+                                res.json(token);
+                            });
                         } else {
                             res.status(404);
                             res.json('Password is not matched.');
@@ -144,4 +178,10 @@ exports.login = function(req, res, next) {
             }
         }
     })
+}
+
+exports.logout = function(req, res, next) {
+    User.update({token: req.token} , { $set: {token: undefined} }, function(err, result) {
+        res.json(result.ok === 1);
+    });
 }

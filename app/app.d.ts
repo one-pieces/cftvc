@@ -6,16 +6,17 @@
 
 //Add type defs for the __initialContext property provided by the index.tmpl file
 interface Window {
-  // sessionStorage: {
-  //   xsrf: string;
-    // user: any;
-  //   systemInfo: any;
-  //   brand: any;
-  //   uiVersion: string;
-  // };
-
-  // Modernizr: any;
-  // Foundation: any;
   require: any;
-  // define: any;
+}
+
+interface JQuery {
+  popover: any;
+}
+
+declare module angular.restmod {
+  export interface IModel<T> {
+    $snapshot(): string;
+    $revert(snapshot?: any): IModel<T>;
+    $patch(params?: any[]): IModel<T>;
+  }
 }

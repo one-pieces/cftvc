@@ -12,6 +12,14 @@ exports.create = function(req, res, next) {
     });
 }
 
+exports.update = function(req, res, next) {
+    var actorId = req.params.id;
+
+    Actor.findOneAndUpdate({_id: actorId}, {$set: req.body}, {new : true}, function(err, actor) {
+        res.json(actor);
+    });
+}
+
 exports.findById = function(req, res, next) {
     var actorId = req.params.id;
 
