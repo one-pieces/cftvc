@@ -20,7 +20,7 @@ export class UserService {
                        models.creator.serviceName,
                        models.user.serviceName];
 
-    // private user: models.user.IUser;
+    // public user: models.user.IUser;
     
     constructor( private $q: ng.IQService,
                  private md5: any,

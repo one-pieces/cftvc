@@ -1,0 +1,45 @@
+<div class="publish-work">
+    <form class="form-horizontal" ng-submit="publishWork.submit()">
+        <div class="form-group">
+            <label for="title" class="col-sm-3 control-label">作品名</label>
+            <div class="col-sm-9">
+                <input class="form-control" id="title" name="title" placeholder="" ng-model="publishWork.work.title">
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="category" class="col-sm-3 control-label">分类</label>
+            <div class="col-sm-9">
+                <input class="form-control" id="category" name="category" placeholder="" ng-model="publishWork.work.category">
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="videoUrl" class="col-sm-3 control-label">视频链接</label>
+            <div class="col-sm-9">
+                <input class="form-control" id="videoUrl" name="videoUrl" placeholder="" ng-model="publishWork.work.videoUrl">
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="intro" class="col-sm-3 control-label">简介</label>
+            <div class="col-sm-9">
+                <textarea class="form-control" id="intro" name="intro" placeholder="" ng-model="publishWork.work.intro" />
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="creator" class="col-sm-3 control-label">创作人</label>
+            <div class="col-sm-9">
+                <input class="form-control" id="creator" name="creator" placeholder="" disabled ng-model="publishWork.work.creator">
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="poster" class="col-sm-3 control-label">海报</label>
+            <div class="col-sm-9">
+                <input class="form-control" id="poster" name="poster" placeholder="" disabled ng-model="publishWork.work.poster">
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-sm-offset-3 col-sm-9">
+                <button class="btn btn-info" type="submit">上传作品</button>
+            </div>
+        </div>
+    </form>
+</div>

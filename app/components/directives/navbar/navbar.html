@@ -8,7 +8,7 @@
                 <span class="icon-bar"></span>
             </button>
             <a ng-show="isBrandShown" class="navbar-brand" href="/" ui-sref="base.index">
-                <img src="static/images/cftvclogo.png" alt width="81" height="25">
+                <img src="static/images/cftvclogo.png" alt width="180" height="32">
             </a>
         </div>
 
@@ -19,6 +19,9 @@
                 </li>
             </ul>
             <ul ng-show="isLoginShown" class="nav navbar-nav navbar-right">
+                <li class="publish-work-button">
+                    <button class="btn btn-info" ui-sref="base.publishWork">发布作品</button>
+                </li>
                 <li ng-show="!navbar.user">
                     <a href="#" ui-sref="base.login">登录</a>
                 </li>

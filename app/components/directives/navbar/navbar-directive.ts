@@ -1,4 +1,4 @@
-/// <r e ference path='../../../app.d.ts' />
+/// <reference path='../../../app.d.ts' />
 /// <amd-dependency path='css!./navbar.css' />
 /// <amd-dependency path='text!components/directives/navbar/navbar.html' />
 import angular = require('angular');

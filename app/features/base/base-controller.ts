@@ -21,7 +21,7 @@ export class BaseController {
     navItems = [
         {
             label: '通告',
-            link: ''
+            link: 'base.jobs'
         },
         { 
             label: '艺人',
@@ -29,15 +29,11 @@ export class BaseController {
         },
         {
             label: '创作人',
-            link: ''
+            link: 'base.creators'
         },
         {
             label: '作品',
-            link: ''
-        },
-        {
-            label: '梦工场',
-            link: ''
+            link: 'base.works'
         }];
 
     constructor(private $scope: IScope,

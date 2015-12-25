@@ -13,7 +13,7 @@ export var serviceName = modelNames.WORK;
 export interface ILearnWork {
     _id?: string;
     intro: string;
-    meta: {
+    meta?: {
         createAt: Date;
         updateAt: Date;
     };
